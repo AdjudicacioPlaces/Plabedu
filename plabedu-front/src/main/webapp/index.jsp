@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <%@ page import="es.caib.prova.*" %>
 <html lang="ca">
@@ -8,7 +10,7 @@
 <meta name="description" content="Portal dels Interins">
 <meta name="author" content="Govern de les Illes Balears.">
 
-<title>Portal del personal de neteja interí­</title>
+<title>Portal del personal de neteja interÃ­Â­</title>
 <!-- Scripts -->
 <!-- Bootstrap JS -->
 <script type="text/javascript"
@@ -41,7 +43,7 @@
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
-	<!-- Barra Navegación -->
+	<!-- Barra NavegaciÃ³n -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<!-- LOGO GOIB -->
@@ -54,7 +56,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<!-- LOGO GOIB -->
-			<!-- Items Navegación -->
+			<!-- Items NavegaciÃ³n -->
 			<div class="container-fluid">
 				<div class="navbar-collapse collapse justify-content-end"
 					id="navbarCollapse">
@@ -78,33 +80,33 @@
 							<ul class="dropdown-menu dropdown-menu-dark"
 								aria-labelledby="navbarDarkDropdownMenuLink">
 								<li><a class="dropdown-item" href="#">Pressa de
-										possesió</a></li>
+										possesiÃ³</a></li>
 								<li><a class="dropdown-item" href="#">Canvi de
 										disponibilitat</a></li>
 								<li><a class="dropdown-item" href="#">Autoritzacions</a></li>
-								<li><a class="dropdown-item" href="#">Renúncies i
+								<li><a class="dropdown-item" href="#">RenÃºncies i
 										ajornaments</a></li>
 								<li><a class="dropdown-item" href="#">Comprova la teva
-										titulació</a></li>
+										titulaciÃ³</a></li>
 							</ul>
 						<li class="nav-item"><a class="nav-link active" href="">Dades
-								prèvies 21/22</a></li>
+								prÃ¨vies 21/22</a></li>
 					</ul>
 				</div>
 			</div>
-			<!-- Items Navegación -->
+			<!-- Items NavegaciÃ³n -->
 		</div>
 	</nav>
-	<!-- Barra Navegación -->
+	<!-- Barra NavegaciÃ³n -->
 	<!-- Cabecera -->
 	<header class="py-5 mb-5">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<h1 class="display-4 text-white mt-5 mb-2">Portal del personal
-						de neteja interí</h1>
+						de neteja interÃ­</h1>
 					<p id="subtitolPortal" class="lead mb-5">
-						<em>Benvinguts al portal del personal de neteja interí</em>
+						<em>Benvinguts al portal del personal de neteja interÃ­</em>
 					</p>
 				</div>
 			</div>
@@ -115,16 +117,16 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>Aplicació per l'adjudicació de places</h2>
+				<h2>AplicaciÃ³ per l'adjudicaciÃ³ de places</h2>
 				<ul>
 					<br>
 					<li><h5><a href="Portal.jsp">Portal d'inici</a></h5></li>
 					<br>
-					<li><h5><a href="Convocatories.html">Convocatòries</a></h5></li>
+					<li><h5><a href="Convocatories.jsp">ConvocatÃ²ries</a></h5></li>
 					<br>
-					<li><h5><a href="Adjudicacio.html">Resultat d'Adjudicacions</a></h5></li>
+					<li><h5><a href="Adjudicacio.jsp">Resultat d'Adjudicacions</a></h5></li>
 					<br>
-					<li><h5><a href="Formulari.html">Formulari</a></h5></li>
+					<li><h5><a href="Formulari.jsp">Formulari</a></h5></li>
 				</ul>
 				<%= Testing.helloWorld() %>
 			</div>
@@ -142,7 +144,7 @@
 			<div class="col-md-6">
 				<hr>
 				<address class="d-flex align-items-start">
-					<i class="material-icons text-primary">home</i>&nbsp; Direcció:
+					<i class="material-icons text-primary">home</i>&nbsp; DirecciÃ³:
 					C/Ter, 16 <br>&nbsp;&nbsp;07009 Palma de Mallorca <br>
 				</address>
 				<address class="d-flex align-items-start">
@@ -165,7 +167,7 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">©&nbsp;Govern de les Illes
+			<p class="m-0 text-center text-white">Â©&nbsp;Govern de les Illes
 				Balears</p>
 		</div>
 	</footer>
