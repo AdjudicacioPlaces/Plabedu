@@ -126,7 +126,7 @@
 							places disponibles a la convocatòria setmanal</p>
 					</div>
 					<div class="card-footer">
-						<a href="iniciConvocatories.do?tipus=S"
+						<a href="Convocatories.jsp"
 							class="btn btn-primary btn-lg btn-block position-relative"
 							role="button">Veure convocatòries</a>
 					</div>

@@ -47,7 +47,7 @@
 		<div class="container">
 			<!-- LOGO GOIB -->
 			<a class="navbar-brand" href="index.html"><img
-				src="files\logo_caib.es.jsp" class="logo" /></a>
+				src="files\logo_caib.es.png" class="logo" /></a>
 			<button class="navbar-toggler collapsed" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 				aria-controls="navbarCollapse" aria-expanded="false"
