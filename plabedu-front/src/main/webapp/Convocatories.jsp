@@ -133,60 +133,59 @@
 					</p>
 				</div>
 				<div class="card-footer text-center">
+					<a href=""
+						class="btn btn-primary btn-block text-center" role="button"><span class="popuptext" id="myPopup">Treballant en l'execució</span></a>
+				</div>
+			</div>
+			<div class="card mb-4 border-info">
+				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
+					DE MARÇ DE 2021</h4>
+				<div class="card-body">
+					<h4 class="card-title text-info";">Resultats publicats</h4><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-success">event_available</i>Data
+						començament: 07/04/2021 12:30
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-danger">event_busy</i>Data
+						finalització: 09/04/2021 12:00
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
+						resultats: 09/04/2021 12:35
+					</p>
+				</div>
+				<div class="card-footer text-center">
+					<a href="Adjudicacio.jsp"
+						class="btn btn-primary btn-block text-center" role="button">Veure
+						resultats</a>
+				</div>
+			</div>
+			<div class="card mb-4 border-info">
+				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
+					DE MARÇ DE 2021</h4>
+				<div class="card-body">
+					<h4 class="card-title text-info";">Resultats publicats</h4><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-success">event_available</i>Data
+						començament: 07/04/2021 12:30
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center">
+						<i class="material-icons text-danger">event_busy</i>Data
+						finalització: 09/04/2021 12:00
+					</p><br>
+					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
+						resultats: 09/04/2021 12:35
+					</p>
+				</div>
+					<div class="card-footer text-center">
 					<a href="Formulari.jsp"
 						class="btn btn-primary btn-block text-center" role="button">Places disponibles</a>
-				</div>
-			</div>
-			<div class="card mb-4 border-info">
-				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
-					DE MARÇ DE 2021</h4>
-				<div class="card-body">
-					<h4 class="card-title text-info";">Resultats publicats</h4><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-success">event_available</i>Data
-						començament: 07/04/2021 12:30
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: 09/04/2021 12:00
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
-				</div>
-				<div class="card-footer text-center">
-					<a href="Adjudicacio.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Veure
-						resultats</a>
-				</div>
-			</div>
-			<div class="card mb-4 border-info">
-				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
-					DE MARÇ DE 2021</h4>
-				<div class="card-body">
-					<h4 class="card-title text-info";">Resultats publicats</h4><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-success">event_available</i>Data
-						començament: 07/04/2021 12:30
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: 09/04/2021 12:00
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
-				</div>
-				<div class="card-footer text-center">
-					<a href="Adjudicacio.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Veure
-						resultats</a>
 				</div>
 			</div>
 		</div>
