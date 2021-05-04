@@ -11,6 +11,7 @@
 
 <title>Resultats de les adjudicacions</title>
 <!-- Scripts -->
+<script type="text/javascript" src="js/Convocatories.js"></script>
 <!-- Bootstrap JS -->
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -128,14 +129,12 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
 				</div>
-				<div class="card-footer text-center">
-					<a href=""
-						class="btn btn-primary btn-block text-center" role="button"><span class="popuptext" id="myPopup">Treballant en l'execució</span></a>
+				 <div class="card-footer text-center">
+				 <div class="popup" onclick="myFunction()">EN EXECUCIÓ
+  					<span class="popuptext" id="myPopup">Treballant amb la convocatòria</span>
 				</div>
+				</div> 
 			</div>
 			<div class="card mb-4 border-info">
 				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
@@ -179,9 +178,6 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
 				</div>
 					<div class="card-footer text-center">
 					<a href="Formulari.jsp"

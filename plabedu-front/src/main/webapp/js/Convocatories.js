@@ -1,9 +1,8 @@
 /**
  * 
  */
-function change() // no ';' here
-{
-    var elem = document.getElementById("myButton1");
-    if (elem.value=="Close Curtain") elem.value = "Open Curtain";
-    else elem.value = "Close Curtain";
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
+
