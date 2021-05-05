@@ -1,6 +1,24 @@
 package es.caib.prova;
 
 public class Plazas {
+	/*-----ESTRUCTURA JSON PERSONAL DE NETEJA-----
+	 *  {
+	 *  "plaza": [
+	 *  			{
+	 *  				"dataAdjudicacio": "09-04-2021",
+	 *  				"tipusContracte": "Eventual",
+	 *  				"tipusJornada": "Parcial",
+	 *  				"dataInici": "10-04-2021",
+	 *  				"dataFiPrevista": "01-05-2021",
+	 *  				"motiu": "IT",
+	 *  				"illa": "Mallorca",
+	 *  				"municipi": "Palma",
+	 *  				"nomOcupant": "Fuster Bauza, Albert",
+	 *  				"unitat": "IES Ses Estacions",
+	 *  			}
+	 *  		]
+	 *  }
+	 */
 	private int id;
 	private String dataAdjudicacio;
 	private String nomDelLloc;
@@ -129,25 +147,24 @@ public class Plazas {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
-	public Plazas() {}
-	
+
+	public Plazas() {
+	}
+
 	public static Plazas createAdjudgedPlace(String dataAdjudicacio, String tipusContracte, String tipusJornada,
-			boolean itinerant, String dataInici, String dataFiPrevista, String motiu, String illa, String municipi,
-			String nomOcupant, String sexeOcupant, String unitat) {
+			String dataInici, String dataFiPrevista, String motiu, String illa, String municipi, String nomOcupant,
+			String unitat) {
 		Plazas plaza = new Plazas();
 		plaza.id += 1;
 		plaza.dataAdjudicacio = dataAdjudicacio;
 		plaza.tipusContracte = tipusContracte;
 		plaza.tipusJornada = tipusJornada;
-		plaza.itinerant = itinerant;
 		plaza.dataInici = dataInici;
 		plaza.dataFiPrevista = dataFiPrevista;
 		plaza.motiu = motiu;
 		plaza.illa = illa;
 		plaza.municipi = municipi;
 		plaza.nomOcupant = nomOcupant;
-		plaza.sexeOcupant = sexeOcupant;
 		plaza.unitat = unitat;
 		return plaza;
 	}

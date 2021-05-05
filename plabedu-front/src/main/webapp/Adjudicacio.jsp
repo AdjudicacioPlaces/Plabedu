@@ -50,14 +50,12 @@ function load_data(){
 			{data:"dataAdjudicacio"},
 			{data:"tipusContracte"},
 			{data:"tipusJornada"},
-			{data:"itinerant"},
 			{data:"dataInici"},
 			{data:"dataFiPrevista"},
 			{data:"motiu"},
 			{data:"illa"},
 			{data:"municipi"},
 			{data:"nomOcupant"},
-			{data:"sexeOcupant"},
 			{data:"unitat"}
 		],"language": {
 	            "processing": "Processant...",
@@ -378,14 +376,12 @@ function load_data(){
 										<th>Data d'Adjudicació</th>
 										<th>Tipus de Contracte</th>
 										<th>Tipus de Jornada</th>
-										<th>Itinerant</th>
 										<th>Data d'Inici</th>
 										<th>Data de Finalització Prevista</th>
 										<th>Motiu</th>
 										<th>Illa</th>
 										<th>Municipi</th>
-										<th>Nom Ocupant</th>
-										<th>Sexe Ocupant</th>
+										<th>Adjudicat a</th>
 										<th>Unitat</th>
 									</tr>
 								</thead>
@@ -394,14 +390,12 @@ function load_data(){
 										<th>Data d'Adjudicació</th>
 										<th>Tipus de Contracte</th>
 										<th>Tipus de Jornada</th>
-										<th>Itinerant</th>
 										<th>Data d'Inici</th>
 										<th>Data de Finalització Prevista</th>
 										<th>Motiu</th>
 										<th>Illa</th>
 										<th>Municipi</th>
-										<th>Nom Ocupant</th>
-										<th>Sexe Ocupant</th>
+										<th>Adjudicat a</th>
 										<th>Unitat</th>
 									</tr>
 								</tfoot>
