@@ -20,22 +20,28 @@ var currentTime = new Date();
     var endExecutionTime = new Date("2021-05-03T24:00:00Z");
     var startCloseTime = new Date("2021-05-04T00:00:01Z");
 
-	if (currentTime.getTime() > startOpenTime.getTime() && currentTime.getTime() <= endOpenTime.getTime()) {
+	if (currentTime.getTime() >= startOpenTime.getTime() && currentTime.getTime() <= endOpenTime.getTime()) {
 		$('.close').hide();
 		$('.execution').hide();
-    } else if (currentTime.getTime() > endOpenTime.getTime) {
+    } else if (currentTime.getTime() >= endOpenTime.getTime) {
         $('.open').hide();
-
+		$('.close').hide();
+		$('.execution').hide();
 	}
-    if (currentTime.getTime() > startExecutionTime.getTime() && currentTime.getTime() <= endExecutionTime.getTime()) {
+    if (currentTime.getTime() >= startExecutionTime.getTime() && currentTime.getTime() <= endExecutionTime.getTime()) {
 		$('.close').hide();
 		$('.open').hide();
-    } else if (currentTime.getTime() > endExecutionTime.getTime) {
+    } else if (currentTime.getTime() >= endExecutionTime.getTime) {
         $('.execution').hide();
+		$('.close').hide();
+		$('.open').hide();
+		
     }
-    if (currentTime.getTime() > startCloseTime.getTime()) {
+    if (currentTime.getTime() >= startCloseTime.getTime()) {
         $('.execution').hide();
 		$('.open').hide();
+		$('.resultats').show();
+		
 }
 }, 0);
 

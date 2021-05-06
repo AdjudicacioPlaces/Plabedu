@@ -129,6 +129,11 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
+					<div class="resultats" style="display:none">
+					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
+						resultats: 09/04/2021 12:35
+					</p>
+					</div>
 				</div>
 				<div class="execution" >
 				 <div class="card-footer text-center">
@@ -167,9 +172,11 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
+					<div class="resultats">
 					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
 						resultats: 09/04/2021 12:35
 					</p>
+					</div>
 				</div>
 				<div class="card-footer text-center">
 					<a href="Adjudicacio.jsp"
@@ -193,6 +200,11 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
+					<div class="resultats">
+					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
+						resultats: 09/04/2021 12:35
+					</p>
+					</div>
 				</div> 
 				<div class="card-footer text-center">
 					<a href="Adjudicacio.jsp"
