@@ -19,7 +19,7 @@ var currentTime = new Date();
     var startExecutionTime = new Date("2021-05-03T00:00:01Z");
     var endExecutionTime = new Date("2021-05-03T24:00:00Z");
     var startCloseTime = new Date("2021-05-04T00:00:01Z");
-
+	currentTime= new Date("2021-05-04T00:00:01Z");
 	if (currentTime.getTime() >= startOpenTime.getTime() && currentTime.getTime() <= endOpenTime.getTime()) {
 		$('.close').hide();
 		$('.execution').hide();
