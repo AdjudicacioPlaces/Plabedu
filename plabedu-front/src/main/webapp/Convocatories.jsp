@@ -130,17 +130,32 @@
 						finalització: 09/04/2021 12:00
 					</p><br>
 				</div>
+				<div class="execution" >
 				 <div class="card-footer text-center">
-				 <div class="popup" onclick="myFunction()">EN EXECUCIÓ
-  					<span class="popuptext" id="myPopup">Treballant amb la convocatòria</span>
+				 <div class="popup" onclick="myFunctionFirstPopup()">EN EXECUCIÓ
+  					<span class="popuptext" id="myPopup1">Treballant amb la convocatòria</span>
 				</div>
-				</div> 
+				</div>
+				</div>
+				<div class="close" >
+				<div class="card-footer text-center">
+					<a href="Adjudicacio.jsp"
+						class="btn btn-primary btn-block text-center" role="button">Veure
+						resultats</a>
+				</div>
+				</div>
+				<div class="open" >
+				<div class="card-footer text-center">
+					<a href="Formulari.jsp"
+						class="btn btn-primary btn-block text-center" role="button">Places disponibles</a>
+				</div>
+				</div>
 			</div>
 			<div class="card mb-4 border-info">
 				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
 					DE MARÇ DE 2021</h4>
 				<div class="card-body">
-					<h4 class="card-title text-info";">Resultats publicats</h4><br>
+					<h4 class="card-title text-info">Resultats publicats</h4><br>
 					<p class="card-text d-inline-flex justify-content-center">
 						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
 					</p><br>
@@ -166,7 +181,7 @@
 				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
 					DE MARÇ DE 2021</h4>
 				<div class="card-body">
-					<h4 class="card-title text-info";">Resultats publicats</h4><br>
+					<h4 class="card-title text-info">Resultats publicats</h4><br>
 					<p class="card-text d-inline-flex justify-content-center">
 						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
 					</p><br>
@@ -178,10 +193,11 @@
 						<i class="material-icons text-danger">event_busy</i>Data
 						finalització: 09/04/2021 12:00
 					</p><br>
-				</div>
-					<div class="card-footer text-center">
-					<a href="Formulari.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Places disponibles</a>
+				</div> 
+				<div class="card-footer text-center">
+					<a href="Adjudicacio.jsp"
+						class="btn btn-primary btn-block text-center" role="button">Veure
+						resultats</a>
 				</div>
 			</div>
 		</div>
