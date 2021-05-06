@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<%@ page import="es.caib.prova.*" %>
 <html lang="ca">
 <head>
 <meta charset="utf-8">
@@ -128,7 +127,6 @@
 					<br>
 					<li><h5><a href="Formulari.jsp">Formulari</a></h5></li>
 				</ul>
-				<%= Testing.helloWorld() %>
 			</div>
 		</div>
 	</section>

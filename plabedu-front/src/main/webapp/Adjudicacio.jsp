@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -22,13 +23,105 @@
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
 <!-- Ajax -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- DATATABLE AJAX JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <!-- JS externo -->
 <script type="text/javascript" src="js/newLogear.js"></script>
-<script type="text/javascript" src="js/Adjudicacio.js"></script>
+<!-- <script type="text/javascript" src="js/Adjudicacio.js"></script> -->
+<script>
+$(document).ready(function(){
+	load_data();
+});
+
+function load_data(){
+	var data={act: "show"};
+	$("#places_adjudicades").DataTable({
+		ajax:{
+			url:"${pageContext.request.contextPath}/AdjudicacioServlet",
+			type: "get",
+			data:data,
+			dataSrc:"result"
+		},
+		columns :[
+			{data:"dataAdjudicacio"},
+			{data:"tipusContracte"},
+			{data:"tipusJornada"},
+			{data:"dataInici"},
+			{data:"dataFiPrevista"},
+			{data:"motiu"},
+			{data:"illa"},
+			{data:"municipi"},
+			{data:"nomOcupant"},
+			{data:"unitat"}
+		],"language": {
+	            "processing": "Processant...",
+	            "lengthMenu": "Mostra _MENU_ registres",
+	            "zeroRecords": "No s'han trobat registres",
+	            "emptyTable": "No hi ha registres disponible en aquesta taula",
+	            "info": "Mostrant del _START_ al _END_ d'un total de _TOTAL_ registres",
+	            "infoEmpty": "No hi ha registres disponibles",
+	            "infoFiltered": "(filtrat de _MAX_ registres)",
+	            "search": "Cerca:",
+	            "infoThousands": ".",
+	            "decimal": ",",
+	            "loadingRecords": "Carregant...",
+	            "paginate": {
+	                "first": "Primer",
+	                "previous": "Anterior",
+	                "next": "Següent",
+	                "last": "Últim"
+	            },
+	            "aria": {
+	                "sortAscending": ": Activa per ordenar la columna de manera ascendent",
+	                "sortDescending": ": Activa per ordenar la columna de manera descendent"
+	            },
+	            "buttons": {
+	                "print": "Imprimeix",
+	                "copy": "Copia",
+	                "colvis": "Columnes",
+	                "copyTitle": "Copia al portapapers",
+	                "copySuccess": {
+	                    "_": "%d files copiades",
+	                    "1": "1 fila copiada"
+	                },
+	                "pageLength": {
+	                    "-1": "Mostra totes les files",
+	                    "_": "Mostra %d files"
+	                },
+	                "pdf": "PDF"
+	            },
+	            "select": {
+	                "rows": {
+	                    "_": "%d files seleccionades",
+	                    "0": "Cap fila seleccionada",
+	                    "1": "1 fila seleccionada"
+	                }
+	            },
+	            "autoFill": {
+	                "cancel": "Cancel·lar"
+	            },
+	            "thousands": ".",
+	            "datetime": {
+	                "hours": "Hora",
+	                "minutes": "Minut",
+	                "seconds": "Segons",
+	                "unknown": "Desconegut",
+	                "amPm": [
+	                    "am",
+	                    "pm"
+	                ]
+	            },
+	            "editor": {
+	                "close": "Tancar"
+	            }
+	        }
+	});
+}
+</script>
 <!-- Scripts -->
 <!-- Estilos -->
 <!-- Bootstrap CSS -->
@@ -40,10 +133,12 @@
 <!-- Iconos -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-	<!-- DATATABLE CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-	<!-- DATATABLE AJAX CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+<!-- DATATABLE CSS -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<!-- DATATABLE AJAX CSS -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
 <!-- CSS externo -->
 <link rel="stylesheet" href="css/style.css">
 <!-- Estilos -->
@@ -109,7 +204,8 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
-					<h1 class="display-4 text-white mt-5 mb-2">Resultats de les adjudicacions</h1>
+					<h1 class="display-4 text-white mt-5 mb-2">Resultats de les
+						adjudicacions</h1>
 				</div>
 			</div>
 		</div>
@@ -118,9 +214,9 @@
 	<!-- Contenido -->
 	<div class="container pb-5">
 		<div class="row justify-content-center">
-			<p id="subtitol" class="text-center">A continuació teniu les places que s'han adjudicat a les
-				diferents convocatòries del curs actual així com les places que
-				s'assignen en el procés extraordinari</p>
+			<p id="subtitol" class="text-center">A continuació teniu les
+				places que s'han adjudicat a les diferents convocatòries del curs
+				actual així com les places que s'assignen en el procés extraordinari</p>
 			<!-- Selección Fecha -->
 			<form class="form" action="resultatsAdjudicacio.do">
 				<div class="form-row pb-3">
@@ -233,15 +329,18 @@
 			(*)La finalització indicada és orientativa, no vinculant i està
 			supeditada a la incorporació del titular. Si el camp apareix en blanc
 			suposa que no és possible concretar cap termini</div>
-		<div id="divPlacesContainer" class="container align-items-start text-center">
+		<div id="divPlacesContainer"
+			class="container align-items-start text-center">
 			<!-- Selección plazas -->
 			<div id="divPlacesButtons" class="row align-items-start">
 				<a id="a_inici"></a>
 				<div id="buttonPlaces" class="col">
-					<a class="badge badge-primary bg-primary" href="#placesAdjudicades">Places adjudicades</a>
+					<a class="badge badge-primary bg-primary" href="#placesAdjudicades">Places
+						adjudicades</a>
 				</div>
 				<div id="buttonPlaces" class="col">
-					<a class="badge badge-primary bg-primary" href="#placesDisponibles">Places no adjudicades</a>
+					<a class="badge badge-primary bg-primary" href="#placesDisponibles">Places
+						no adjudicades</a>
 				</div>
 				<div class="col">
 					<a class="badge badge-primary bg-primary"
@@ -267,165 +366,47 @@
 					</tr>
 				</thead>
 			</table>
-	<section class="container text-center">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="table-responsive">
-					<table id="places_adjudicades" class="display">
-        <thead>
-            <tr>
-                <th>Data adjudicació</th>
-                <th>Llocs treball</th>
-                <th>Convocatòria</th>
-                <th>Funcions</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Data adjudicació</th>
-                <th>Llocs treball</th>
-                <th>Convocatòria</th>
-                <th>Funcions</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-            </tr>
-        </tfoot>
-    </table>
-				</div>
-			</div>
-		</div>
-	</section>
-		</div>
-		<div class="container pb-3" id="classResultatsDIS">
-			<table id="placesDisponibles"
-				class="table table-striped table-hover table-bordered">
-				<thead class="table-info text-muted">
-					<tr>
-						<th colspan="9">
-							<h2>
-								<small><a href="#a_inici" class="badge badge-secondary"
-									title="Anar a l'inici"><i class="material-icons">vertical_align_top</i></a></small>
-								Relació de places que no han estat adjudicades <small>(Total
-									de places: 33)</small>
-							</h2>
-						</th>
-					</tr>
-				</thead>
-			</table>
 			<section class="container text-center">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="table-responsive">
-					<table id="places_no_adjudicades" class="display">
-        <thead>
-            <tr>
-                <th>Data adjudicació</th>
-                <th>Llocs treball</th>
-                <th>Convocatòria</th>
-                <th>Funcions</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Data adjudicació</th>
-                <th>Llocs treball</th>
-                <th>Convocatòria</th>
-                <th>Funcions</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-            </tr>
-        </tfoot>
-    </table>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="table-responsive">
+							<table id="places_adjudicades" class="display">
+								<thead>
+									<tr>
+										<th>Data d'Adjudicació</th>
+										<th>Tipus de Contracte</th>
+										<th>Tipus de Jornada</th>
+										<th>Data d'Inici</th>
+										<th>Data de Finalització Prevista</th>
+										<th>Motiu</th>
+										<th>Illa</th>
+										<th>Municipi</th>
+										<th>Adjudicat a</th>
+										<th>Unitat</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th>Data d'Adjudicació</th>
+										<th>Tipus de Contracte</th>
+										<th>Tipus de Jornada</th>
+										<th>Data d'Inici</th>
+										<th>Data de Finalització Prevista</th>
+										<th>Motiu</th>
+										<th>Illa</th>
+										<th>Municipi</th>
+										<th>Adjudicat a</th>
+										<th>Unitat</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
-			</div>
+			</section>
 		</div>
-	</section>
-		</div>
-		<div class="container pb-3" id="classResultatsANU">
-			<table id="placesDisponiblesAnullades"
-				class="table table-striped table-hover table-bordered">
-				<thead class="table-danger text-muted">
-					<tr>
-						<th colspan="9">
-							<h2>
-								<small><a href="#a_inici" class="badge badge-secondary"
-									title="Anar a l'inici"><i class="material-icons">vertical_align_top</i></a></small>
-								Relació de places eliminades per a l'adjudicació <small>(Total
-									de places: 3)</small>
-							</h2>
-						</th>
-					</tr>
-				</thead>
-			</table>
-			<section class="container text-center">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="table-responsive">
-					<table id="places_eliminades" class="display">
-        <thead>
-            <tr>
-                <th>Llocs treball</th>
-                <th>Funcions</th>
-                <th>Perfils</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-                <th>Data anul·lació</th>
-                <th>Motiu anul·lació</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Llocs treball</th>
-                <th>Funcions</th>
-                <th>Perfils</th>
-                <th>Tipus</th>
-				<th>Mitja jornada</th>
-                <th>Itinerant</th>
-                <th>Data inici</th>
-                <th>Data finalització prevista</th>
-                <th>Data petició director</th>
-                <th>Motiu</th>
-                <th>Data anul·lació</th>
-                <th>Motiu anul·lació</th>
-            </tr>
-        </tfoot>
-    </table>
-				</div>
-			</div>
-		</div>
-	</section>
-		</div>
-		<!-- Resultados -->
 	</div>
+	<!-- Contenido -->
 	<!-- Datos de contacto -->
 	<section id="contactSection" class="container">
 		<div class="row">
