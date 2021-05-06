@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
+	<%@ page import="es.caib.prova.*"%>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -8,7 +9,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Portal dels Interins">
 <meta name="author" content="Govern de les Illes Balears.">
-
 <title>Resultats de les adjudicacions</title>
 <!-- Scripts -->
 <!-- Bootstrap JS -->
@@ -112,35 +112,34 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<form>
+				<form action="FormulariServlet" method="post">
+					<div id="logearForm" class="mb-3">
+						<label for="nom" class="form-label">Nom</label> <input type="text"
+							class="form-control" id="nom" name="nom">
+					</div>
+					<div class="mb-3">
+						<label for="llinatge1" class="form-label">Primer Llinatge</label>
+						<input type="text" class="form-control" id="llinatge1" name="llinatge1">
+					</div>
+					<div class="mb-3">
+						<label for="llinatge2" class="form-label">Segon Llinatge</label> <input
+							type="text" class="form-control" id="llinatge2" name="llinatge2">
+					</div>
+					<div class="mb-3">
+						<label for="catProfessional" class="form-label">Categoria
+							Professional</label> <select class="form-select" id="catProfessional" name="catProfessional"
+							aria-label="Default select example">
+							<option selected>Tria una categoria</option>
+							<option value="Netejador/a">Netejador/a</option>
+							<option value="ATE">ATE</option>
+						</select>
+					</div>
+					<input class="btn btn-primary" type="submit" id="desa" value="Desa">
 					<div id="tableDiv" class="table-responsive">
 						<table class="table table-striped" id="excelDataTable">
 							<tbody></tbody>
 						</table>
 					</div>
-					<div id="logearForm" class="mb-3">
-						<label for="nom" class="form-label">Nom</label> <input type="text"
-							class="form-control" id="nom">
-					</div>
-					<div class="mb-3">
-						<label for="llinatge1" class="form-label">Primer Llinatge</label>
-						<input type="text" class="form-control" id="llinatge1">
-					</div>
-					<div class="mb-3">
-						<label for="llinatge2" class="form-label">Segon Llinatge</label> <input
-							type="text" class="form-control" id="llinatge2">
-					</div>
-					<div class="mb-3">
-						<label for="catProfessional" class="form-label">Categoria
-							Professional</label> <select class="form-select" id="catProfessional"
-							aria-label="Default select example">
-							<option selected>Tria una categoria</option>
-							<option value="1">Netejador/a</option>
-							<option value="2">ATE</option>
-						</select>
-					</div>
-					<button class="btn btn-primary" type="button" id="desa">Desa
-						els canvis</button>
 				</form>
 			</div>
 		</div>

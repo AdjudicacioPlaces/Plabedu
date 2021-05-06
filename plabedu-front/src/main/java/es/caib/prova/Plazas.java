@@ -19,18 +19,19 @@ public class Plazas {
 	 *  		]
 	 *  }
 	 */
+	private static int autoIncrementId;
 	private int id;
 	private String dataAdjudicacio;
-	private String nomDelLloc;
-	private String unitat;
 	private String tipusContracte;
 	private String tipusJornada;
-	private boolean itinerant;
 	private String dataInici;
 	private String dataFiPrevista;
 	private String motiu;
 	private String illa;
 	private String municipi;
+	private String unitat;
+	private String nomDelLloc;
+	private boolean itinerant;
 	private String nomOcupant;
 	private String sexeOcupant;
 	private String categoria;
@@ -154,8 +155,9 @@ public class Plazas {
 	public static Plazas createAdjudgedPlace(String dataAdjudicacio, String tipusContracte, String tipusJornada,
 			String dataInici, String dataFiPrevista, String motiu, String illa, String municipi, String nomOcupant,
 			String unitat) {
+		autoIncrementId += 1;
 		Plazas plaza = new Plazas();
-		plaza.id += 1;
+		plaza.id = autoIncrementId;
 		plaza.dataAdjudicacio = dataAdjudicacio;
 		plaza.tipusContracte = tipusContracte;
 		plaza.tipusJornada = tipusJornada;

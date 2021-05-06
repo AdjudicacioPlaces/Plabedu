@@ -25,14 +25,15 @@ function buildHtmlTable(selector) {
 		var row$ = $('<tr/>');
 		for (var colIndex = 0; colIndex < columns.length; colIndex++) {
 			var cellValue = myList[i][columns[colIndex]];
-			if (cellValue == null)
+			if (cellValue == null) {
 				cellValue = "";
+			}
 			row$.append($('<td/>').html(cellValue));
 		}
 		row$
 			.append($('<td/>')
 				.html(
-					"<input type='number' class='prova' min='0' max='9' onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' style=' width:100px'>" ));
+					"<input type='number' class='prova' min='0' max='9' onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' style=' width:100px'>"));
 		$(selector).append(row$);
 	}
 	setFunction();
@@ -47,8 +48,10 @@ function addAllColumnHeaders(myList, selector) {
 	for (var i = 0; i < myList.length; i++) {
 		var rowHash = myList[i];
 		for (var key in rowHash) {
+			console.log(key);
 			if ($.inArray(key, columnSet) == -1 && key != "id") {
 				columnSet.push(key);
+				console.log(columnSet);
 				headerTr$.append($('<th/>').html(key));
 			}
 		}
@@ -57,6 +60,39 @@ function addAllColumnHeaders(myList, selector) {
 	$(selector).append(headerTr$);
 
 	return columnSet;
+}
+
+function buildNewHtmlTable(selector) {
+	var columns = addPredefinedColumnHeaders(selector);
+
+	for (var i = 0; i < list.length; i++) {
+		var row$ = $('<tr/>');
+		for (var colIndex = 1; colIndex < columns.length; colIndex++) {
+			var cellValue = myList[i][columns[colIndex]];
+			if (cellValue == null) {
+				cellValue = "";
+			}
+			row$.append($('<td/>').html(cellValue));
+		}
+		row$
+			.append($('<td/>')
+				.html(
+					"<input type='number' class='prova' min='0' max='9' onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' style=' width:100px'>"));
+		$(selector).append(row$);
+	}
+	setFunction();
+	createHiddenInputs();
+}
+
+function addPredefinedColumnHeaders(selector) {
+	var columnNames = ["Data d'Adjudicació'", "Tipus de Contracte", "Tipus de Jornada", "Data d'Inici", "Data de Finalització Prevista", "Motiu", "Illa", "Municipi", "Adjudicat a", "Unitat"];
+	var headerTr = $('<tr/>');
+	for (var i = 0; i < columnNames.length; i++) {
+		headerTr.append($('<th/>').html(columnNames[i]));
+	}
+	headerTr$.append($('<th/>').html("Modificar"));
+	$(selector).append(headerTr);
+	return columnNames;
 }
 
 // Funcion que añade la funcion sortTable() a todos los elementos th
