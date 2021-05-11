@@ -29,7 +29,8 @@ public class Proves extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("myWord", "Hello World!");
+		request.setAttribute("numButton", "1");
+		request.setAttribute("booleano", "true");
 		RequestDispatcher myDispatcher=request.getRequestDispatcher("/Proves.jsp");
 		myDispatcher.forward(request, response);
 	}

@@ -126,6 +126,8 @@
 					<li><h5><a href="Adjudicacio.jsp">Resultat d'Adjudicacions</a></h5></li>
 					<br>
 					<li><h5><a href="Formulari.jsp">Formulari</a></h5></li>
+					<br>
+					<li><h5><a href="Proves">Proves amb els botons</a></h5></li>
 				</ul>
 			</div>
 		</div>
