@@ -84,6 +84,10 @@ function buildNewHtmlTable(selector) {
 	createHiddenInputs();
 }
 
+function addPrueba(variable){
+	document.getElementById("parrafo").innerHTML= variable;
+}
+
 function addPredefinedColumnHeaders(selector) {
 	var columnNames = ["Data d'Adjudicació'", "Tipus de Contracte", "Tipus de Jornada", "Data d'Inici", "Data de Finalització Prevista", "Motiu", "Illa", "Municipi", "Adjudicat a", "Unitat"];
 	var headerTr = $('<tr/>');

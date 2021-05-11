@@ -25,7 +25,6 @@ import com.google.gson.reflect.TypeToken;
 @WebServlet("/FormulariServlet")
 public class FormulariServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static JSONObject jsonObject;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -42,9 +41,8 @@ public class FormulariServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Plazas> list = new ArrayList<>();
-		list = ModeloPlaza.getPlazas();
-		request.setAttribute("listPlaza", list);
+		String var = "HelloWorld!!!";
+		request.setAttribute("variable", var);
 		RequestDispatcher myDispatcher=request.getRequestDispatcher("/Formulari.jsp");
 		myDispatcher.forward(request, response);
 	}

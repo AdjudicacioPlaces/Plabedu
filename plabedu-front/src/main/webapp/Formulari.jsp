@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 	<%@ page import="es.caib.prova.*"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -25,7 +26,7 @@
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- JS externo -->
-<script type="text/javascript" src="js/newLogear.js"></script>
+
 <!-- Scripts -->
 <!-- Estilos -->
 <!-- Bootstrap CSS -->
@@ -42,6 +43,7 @@
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
+<c:set name="myVar" value="primera variable con jstl" />
 	<!-- Barra Navegación -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -103,6 +105,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<h1 class="display-4 text-white mt-5 mb-2">Places disponibles</h1>
+					<p id="parrafo"></p>
 				</div>
 			</div>
 		</div>
@@ -184,5 +187,6 @@
 		</div>
 	</footer>
 	<!-- Footer -->
+	<script type="text/javascript" src="js/newLogear.js"></script>
 </body>
 </html>
