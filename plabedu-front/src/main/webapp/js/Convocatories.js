@@ -1,4 +1,4 @@
-window.setInterval(function() {
+/*window.setInterval(function() {
 
 var currentTime = new Date();
     // Converts currentTime (client local time) to UTC
@@ -43,7 +43,7 @@ var currentTime = new Date();
 		$('.resultats').show();
 		
 }
-}, 0);
+}, 0);*/
 
 function myFunctionFirstPopup() {
   var popup = document.getElementById("myPopup1");

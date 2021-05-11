@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,21 +136,21 @@
 					</p>
 					</div>
 				</div>
-				<div class="execution" >
+				<div id="execucio" hidden="true">
 				 <div class="card-footer text-center">
 				 <div class="popup" onclick="myFunctionFirstPopup()">EN EXECUCIÓ
   					<span class="popuptext" id="myPopup1">Treballant amb la convocatòria</span>
 				</div>
 				</div>
 				</div>
-				<div class="close" >
+				<div id="tancat" hidden="true">
 				<div class="card-footer text-center">
 					<a href="Adjudicacio.jsp"
 						class="btn btn-primary btn-block text-center" role="button">Veure
 						resultats</a>
 				</div>
 				</div>
-				<div class="open" >
+				<div id="obert" hidden="true">
 				<div class="card-footer text-center">
 					<a href="Formulari.jsp"
 						class="btn btn-primary btn-block text-center" role="button">Places disponibles</a>
@@ -254,5 +255,11 @@
 		</div>
 	</footer>
 	<!-- Footer -->
+	<script>
+	function showElement(selector){
+		document.getElementById(selector).hidden = false;
+	}
+	</script>
+	<script>showElement('<c:out value="${id}"></c:out>')</script>
 </body>
 </html>
