@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <html lang="ca">
 <head>
 <meta charset="utf-8">
@@ -119,16 +121,45 @@
 				<h2>Aplicació per l'adjudicació de places</h2>
 				<ul>
 					<br>
-					<li><h5><a href="Portal.jsp">Portal d'inici</a></h5></li>
+					<li><h5>
+							<a href="Portal.jsp">Portal d'inici</a>
+						</h5></li>
 					<br>
-					<li><h5><a href="Convocatories.jsp">Convocatòries</a></h5></li>
+					<li><h5>
+							<a href="Convocatories.jsp">Convocatòries</a>
+						</h5></li>
 					<br>
-					<li><h5><a href="Adjudicacio.jsp">Resultat d'Adjudicacions</a></h5></li>
+					<li><h5>
+							<a href="Adjudicacio.jsp">Resultat d'Adjudicacions</a>
+						</h5></li>
 					<br>
-					<li><h5><a href="Formulari.jsp">Formulari</a></h5></li>
+					<li><h5>
+							<a href="Formulari.jsp">Formulari</a>
+						</h5></li>
 					<br>
-					<li><h5><a href="Proves">Proves amb els botons</a></h5></li>
+					<li><h5>
+							<a href="Proves">Proves amb els botons</a>
+						</h5></li>
 				</ul>
+					<c:set var="locale" value="es" />
+		<fmt:setLocale value="${locale}" scope="session" />
+		<fmt:setBundle basename="Messages" scope="session" />
+		<fmt:message key="TEMPLATE.STRING1" />
+		<BR>
+		<fmt:message key="TEMPLATE.STRING2" />
+		<BR>
+		<fmt:message key="TEMPLATE.STRING3" />
+		<BR>
+
+		<c:set var="locale" value="en" />
+		<fmt:setLocale value="${locale}" scope="session" />
+		<fmt:setBundle basename="Messages" scope="session" />
+		<fmt:message key="TEMPLATE.STRING1" />
+		<BR>
+		<fmt:message key="TEMPLATE.STRING2" />
+		<BR>
+		<fmt:message key="TEMPLATE.STRING3" />
+		<BR>
 			</div>
 		</div>
 	</section>
