@@ -7,6 +7,7 @@ public class Button {
 
 	private Calendar beginDate;
 	private Calendar finishDate;
+	private Calendar executionDate;
 	private String id;
 	public Calendar getBeginDate() {
 		return beginDate;
@@ -20,6 +21,14 @@ public class Button {
 	public void setFinishDate(Calendar finishDate) {
 		this.finishDate = finishDate;
 	}
+		
+	public Calendar getExecutionDate() {
+		return executionDate;
+	}
+	public void setExecutionDate(Calendar executionDate) {
+		this.executionDate = executionDate;
+	}
+	
 	public String getId() {
 		return id;
 	}

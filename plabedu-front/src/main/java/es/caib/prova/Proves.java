@@ -1,11 +1,12 @@
 package es.caib.prova;
-
+import es.caib.prova.Convocatoria;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,13 +22,15 @@ import javax.servlet.http.HttpServletResponse;
 public class Proves extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Button> buttonList = new ArrayList<>();
-
+	GregorianCalendar startObertTramit = new GregorianCalendar(2021, 05, 8, 0, 0);
+	GregorianCalendar finishObertTramit = new GregorianCalendar(2021, 05, 10, 0, 0);
+	GregorianCalendar startExecucioTramit = new GregorianCalendar(2021, 05, 10, 0, 1);
+	GregorianCalendar finishExecucioTramit = new GregorianCalendar(2021, 05, 10, 23, 59);
 	public Proves() {
 		super();
-		this.createButtons(new GregorianCalendar(2021, 05, 8, 0, 0), new GregorianCalendar(2021, 05, 10, 0, 0),
-				"obert");
-		this.createButtons(new GregorianCalendar(2021, 05, 10, 0, 1), new GregorianCalendar(2021, 05, 10, 23, 59),
-				"execucio");
+		
+		this.createButtons(startObertTramit, finishObertTramit, "obert");
+		this.createButtons(startExecucioTramit, finishExecucioTramit, "execucio");
 	}
 
 	private void createButtons(GregorianCalendar beginDate, GregorianCalendar finishDate, String id) {
@@ -48,12 +51,15 @@ public class Proves extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id="";
+		
 		for(Button button:buttonList) {
 			if(!this.insideThreshold(button)) id=button.getId();
 		}
 		if(id.equals("")) {
 			id="tancat";
 		}
+		List<Convocatoria> convocatories = ConvocatoriaService.getAllConvocatories();
+		request.setAttribute("convocatories", convocatories);
 		request.setAttribute("id", id);
 		RequestDispatcher myDispatcher = request.getRequestDispatcher("/Convocatories.jsp");
 		myDispatcher.forward(request, response);

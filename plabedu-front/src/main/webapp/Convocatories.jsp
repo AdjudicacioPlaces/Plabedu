@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,29 +113,27 @@
 	</header>
 	<!-- Cabecera -->
 	<!-- Contenido -->
+	
 	<div id="contentContainer" class="container">
+	<c:forEach items="${convocatories}" var="convocatoria">
 		<div class="card-group text-center">
 			<div class="card mb-4 border-info">
-				<h4 class="card-header text-center">388 - PLACES DEL 7 AL 9
-					D'ABRIL DE 2021</h4>
-				<div class="card-body">
-					<h4  class="card-title text-info">Resultats publicats</h4><br>
+				<div class="card-header text-center">
+					${convocatoria.titolConvocatoria}
+				</div>
+				<div class="card-body text-center">
+					<h4 class="card-title text-info"> Convocatòria</h4><br>
 					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
+						<i class="material-icons text-info">event</i>Data publicació: ${convocatoria.dataPublicacio}
 					</p><br>
 					<p class="card-text d-inline-flex justify-content-center">
 						<i class="material-icons text-success">event_available</i>Data
-						començament: 07/04/2021 12:30
+						començament: ${convocatoria.dataComençament} 
 					</p><br>
 					<p class="card-text d-inline-flex justify-content-center">
 						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: 09/04/2021 12:00
+						finalització: ${convocatoria.dataFinalitzacio}  
 					</p><br>
-					<div class="resultats" style="display:none">
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
-					</div>
 				</div>
 				<div id="execucio" hidden="true">
 				 <div class="card-footer text-center">
@@ -157,63 +156,8 @@
 				</div>
 				</div>
 			</div>
-			<div class="card mb-4 border-info">
-				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
-					DE MARÇ DE 2021</h4>
-				<div class="card-body">
-					<h4 class="card-title text-info">Resultats publicats</h4><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-success">event_available</i>Data
-						començament: 07/04/2021 12:30
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: 09/04/2021 12:00
-					</p><br>
-					<div class="resultats">
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
-					</div>
-				</div>
-				<div class="card-footer text-center">
-					<a href="Adjudicacio.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Veure
-						resultats</a>
-				</div>
-			</div>
-			<div class="card mb-4 border-info">
-				<h4 class="card-header text-center">387 - PLACES DEL 19 AL 22
-					DE MARÇ DE 2021</h4>
-				<div class="card-body">
-					<h4 class="card-title text-info">Resultats publicats</h4><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: 07/04/2021
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-success">event_available</i>Data
-						començament: 07/04/2021 12:30
-					</p><br>
-					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: 09/04/2021 12:00
-					</p><br>
-					<div class="resultats">
-					<p class="card-text d-inline-flex justify-content-center"><i class="material-icons text-black ">date_range</i>Data
-						resultats: 09/04/2021 12:35
-					</p>
-					</div>
-				</div> 
-				<div class="card-footer text-center">
-					<a href="Adjudicacio.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Veure
-						resultats</a>
-				</div>
-			</div>
 		</div>
+	</c:forEach>
 	</div>
 	<!-- Contenido -->
 <!-- Datos de contacto -->
