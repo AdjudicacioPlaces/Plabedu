@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="ple"%>
 
 <!DOCTYPE html>
 <html>
@@ -115,7 +115,7 @@
 	<!-- Contenido -->
 	
 	<div id="contentContainer" class="container">
-	<c:forEach items="${convocatories}" var="convocatoria">
+	<ple:forEach items="${convocatories}" var="convocatoria">
 		<div class="card-group text-center">
 			<div class="card mb-4 border-info">
 				<div class="card-header text-center">
@@ -157,7 +157,7 @@
 				</div>
 			</div>
 		</div>
-	</c:forEach>
+	</ple:forEach>
 	</div>
 	<!-- Contenido -->
 <!-- Datos de contacto -->

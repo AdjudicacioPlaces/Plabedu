@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="ple"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <html lang="ca">
 <head>
@@ -93,6 +93,21 @@
 						<li class="nav-item"><a class="nav-link active" href="">Dades
 								prèvies 21/22</a></li>
 					</ul>
+						
+					<script>
+						function canviidioma(idio) {
+							var literal = "<pla:set var='idioma' value='"+idio+"' />";
+							document.getElementById("def_idioma").innerHTML = literal
+						}
+					</script>
+					<div id="def_idioma">
+						<ple:set var='idioma' value='cat' />
+					</div>
+
+	          	<a class="nav-link text-white" style="text-decoration: none" onclick= "canviidioma('es')" >ES</a>
+	          	<span class="text-secondary"> | </span>
+	          	<a class="nav-link text-white" style="text-decoration: none" onclick= "canviidioma('cat')" >CA</a>
+	          
 				</div>
 			</div>
 			<!-- Items Navegación -->
@@ -141,25 +156,25 @@
 							<a href="Proves">Proves amb els botons</a>
 						</h5></li>
 				</ul>
-					<c:set var="locale" value="es" />
-		<fmt:setLocale value="${locale}" scope="session" />
-		<fmt:setBundle basename="Messages" scope="session" />
-		<fmt:message key="TEMPLATE.STRING1" />
-		<BR>
-		<fmt:message key="TEMPLATE.STRING2" />
-		<BR>
-		<fmt:message key="TEMPLATE.STRING3" />
-		<BR>
+				<ple:set var="locale" value="es" />
+				<fmt:setLocale value="${locale}" scope="session" />
+				<fmt:setBundle basename="Messages" scope="session" />
+				<fmt:message key="TEMPLATE.STRING1" />
+				<BR>
+				<fmt:message key="TEMPLATE.STRING2" />
+				<BR>
+				<fmt:message key="TEMPLATE.STRING3" />
+				<BR>
 
-		<c:set var="locale" value="en" />
-		<fmt:setLocale value="${locale}" scope="session" />
-		<fmt:setBundle basename="Messages" scope="session" />
-		<fmt:message key="TEMPLATE.STRING1" />
-		<BR>
-		<fmt:message key="TEMPLATE.STRING2" />
-		<BR>
-		<fmt:message key="TEMPLATE.STRING3" />
-		<BR>
+				<ple:set var="locale" value="en" />
+				<fmt:setLocale value="${locale}" scope="session" />
+				<fmt:setBundle basename="Messages" scope="session" />
+				<fmt:message key="TEMPLATE.STRING1" />
+				<BR>
+				<fmt:message key="TEMPLATE.STRING2" />
+				<BR>
+				<fmt:message key="TEMPLATE.STRING3" />
+				<BR>
 			</div>
 		</div>
 	</section>
