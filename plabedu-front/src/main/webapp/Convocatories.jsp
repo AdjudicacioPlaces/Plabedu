@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="ple"%>
+
 
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="ple"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -45,6 +47,8 @@
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
+	<fmt:setLocale value="${param.l}" />
+	<fmt:setBundle basename="m" var="i"/>
 	<!-- Barra Navegación -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -64,36 +68,36 @@
 					id="navbarCollapse">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
-							href="inici.do">Inici</a></li>
+							href="inici.do"><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></a></li>
 						<li class="nav-item dropdown  active"><a
 							class="nav-link dropdown-toggle active" href="#"
 							id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Interins
-								Disponibles </a>
+							data-bs-toggle="dropdown" aria-expanded="false"><fmt:message bundle="${i}" key="TEMPLATE.INTERINSDISPONIBLES" /></a>
 							<ul class="dropdown-menu dropdown-menu-dark"
 								aria-labelledby="navbarDarkDropdownMenuLink">
-								<li><a class="dropdown-item" href="#">per Personal de
-										Neteja</a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.PERSONALNETEJA" /></a></li>
 							</ul></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle active" href="#"
 							id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Utilitats </a>
+							data-bs-toggle="dropdown" aria-expanded="false"><fmt:message bundle="${i}" key="TEMPLATE.UTILITATS" /></a>
 							<ul class="dropdown-menu dropdown-menu-dark"
 								aria-labelledby="navbarDarkDropdownMenuLink">
-								<li><a class="dropdown-item" href="#">Pressa de
-										possesió</a></li>
-								<li><a class="dropdown-item" href="#">Canvi de
-										disponibilitat</a></li>
-								<li><a class="dropdown-item" href="#">Autoritzacions</a></li>
-								<li><a class="dropdown-item" href="#">Renúncies i
-										ajornaments</a></li>
-								<li><a class="dropdown-item" href="#">Comprova la teva
-										titulació</a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.POSSESSIO" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.CANVIDISPONIBILITAT" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.AUTORITZACIONS" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.RENUNCIES" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.COMPROVATITULACIO" /></a></li>
 							</ul>
-						<li class="nav-item"><a class="nav-link active" href="">Dades
-								prèvies 21/22</a></li>
+						<li class="nav-item"><a class="nav-link active" href=""><fmt:message bundle="${i}" key="TEMPLATE.DADESPREVIES" /></a></li>
 					</ul>
+						<button
+							class="m-0 text-center text-white float-right btn btn-black"
+							onclick="window.location.href='Portal.jsp'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
+						<span class="text-white"> | </span>
+						<button
+							class="m-0 text-center text-white float-right btn btn-black"
+							onclick="window.location.href='Portal.jsp?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
 				</div>
 			</div>
 			<!-- Items Navegación -->
@@ -105,8 +109,7 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
-					<h1 id="cabeceraLlistes" class="display-4 text-white mb-2">Convocatòria
-						setmanal de places</h1>
+					<h1 id="cabeceraLlistes" class="display-4 text-white mb-2"><fmt:message bundle="${i}" key="TEMPLATE.CONVOCATORIASETMANALPLACES" /></h1>
 				</div>
 			</div>
 		</div>
@@ -160,32 +163,32 @@
 	</ple:forEach>
 	</div>
 	<!-- Contenido -->
-<!-- Datos de contacto -->
+	<!-- Contenido -->
+	<!-- Datos de contacto -->
 	<section id="contactSection" class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>Govern de las Illes Balears</h3>
+				<h3><fmt:message bundle="${i}" key="TEMPLATE.PEUDEPAGINA" /></h3>
 			</div>
 		</div>
 		<div id="addressDiv" class="row d-flex align-items-end">
 			<div class="col-md-6">
 				<hr>
 				<address class="d-flex align-items-start">
-					<i class="material-icons text-primary">home</i>&nbsp; Direcció:
-					C/Ter, 16 <br>&nbsp;&nbsp;07009 Palma de Mallorca <br>
+					<i class="material-icons text-primary">home</i>&nbsp; <fmt:message bundle="${i}" key="TEMPLATE.DIRECCIO" /> <br>&nbsp;&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.LLOC" /><br>
 				</address>
 				<address class="d-flex align-items-start">
-					<i class="material-icons text-primary">phone</i>&nbsp; 971 177 800
+					<i class="material-icons text-primary">phone</i>&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.PHONE" />
 				</address>
 			</div>
 			<div class="col-md-6">
 				<address class="d-flex align-items-start">
 					<i class="material-icons text-primary">email</i>&nbsp;
-					Example:&nbsp;<a href="mailto:example@caib.es">example@caib.es</a>
+					<fmt:message bundle="${i}" key="TEMPLATE.EXEMPLE1" />&nbsp;<a href="mailto:example@caib.es"><fmt:message bundle="${i}" key="TEMPLATE.EMAIL1" /></a>
 				</address>
 				<address class="d-flex align-items-start">
 					<i class="material-icons text-primary">email</i>&nbsp;
-					Example:&nbsp;<a href="mailto:example@caib.es">example@caib.es</a>
+					<fmt:message bundle="${i}" key="TEMPLATE.EXEMPLE2" />&nbsp;<a href="mailto:example@caib.es"><fmt:message bundle="${i}" key="TEMPLATE.EMAIL2" /></a>
 				</address>
 			</div>
 		</div>
@@ -194,8 +197,7 @@
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">©&nbsp;Govern de les Illes
-				Balears</p>
+			<p class="m-0 text-center text-white">©&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.PEUDEPAGINA" /></p>
 		</div>
 	</footer>
 	<!-- Footer -->
