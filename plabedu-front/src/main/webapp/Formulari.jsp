@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 	<%@ page import="es.caib.prova.*"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -43,7 +42,6 @@
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
-<c:set name="myVar" value="primera variable con jstl" />
 	<!-- Barra Navegación -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -127,6 +125,14 @@
 					<div class="mb-3">
 						<label for="llinatge2" class="form-label">Segon Llinatge</label> <input
 							type="text" class="form-control" id="llinatge2" name="llinatge2">
+					</div>
+					<div class="mb-3">
+						<label for="telefon" class="form-label">Telèfon</label>
+						<input type="text" class="form-control" id="telefon" name="telefon">
+					</div>
+					<div class="mb-3">
+						<label for="email" class="form-label">Correu electrònic</label>
+						<input type="text" class="form-control" id="email" name="email">
 					</div>
 					<div class="mb-3">
 						<label for="catProfessional" class="form-label">Categoria
