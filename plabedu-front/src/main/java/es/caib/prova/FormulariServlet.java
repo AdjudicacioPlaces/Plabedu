@@ -41,10 +41,6 @@ public class FormulariServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String var = "HelloWorld!!!";
-		request.setAttribute("variable", var);
-		RequestDispatcher myDispatcher=request.getRequestDispatcher("/Formulari.jsp");
-		myDispatcher.forward(request, response);
 	}
 
 	/**
@@ -53,15 +49,22 @@ public class FormulariServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		PDFGenerator.createPDF("Antonia", "Rivas");
+		try {
+			EmailSender.sendEmail();
+
+		}catch(Exception e) {
+			System.out.println("Error enviando email.");
+			e.printStackTrace();
+		}
 		String nom = request.getParameter("nom");
-		String llinatge1 = request.getParameter("llinatge1");
-		String llinatge2 = request.getParameter("llinatge2");
-		String selectedOption = request.getParameter("catProfessional");
+		String llinatges = request.getParameter("llinatge1") + request.getParameter("llinatge2");
+		String telefon = request.getParameter("telefon");
+		String email = request.getParameter("email");
 		PrintWriter salida = response.getWriter();
 		salida.println("<html><body>");
-		salida.println("Nom: " + nom + "<br/>" + "Primer llinatge: " + llinatge1 + "<br/>" + "Segon llinatge: "
-				+ llinatge2 + "<br/>" + "Opció seleccionada: " + selectedOption);
+		salida.println("Nom: " + nom + "<br/>" + "Llinatges: " + llinatges + "<br/>" + "Telèfon: " + telefon + "<br/>"
+				+ "Email: " + email);
 		salida.println("</body></html");
 	}
 
