@@ -10,8 +10,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Portal dels Interins">
 <meta name="author" content="Govern de les Illes Balears.">
-
-<title>Portal del personal de neteja interí</title>
 <!-- Scripts -->
 <!-- Bootstrap JS -->
 <script type="text/javascript"
@@ -46,6 +44,7 @@
 <body onLoad="buildHtmlTable('#excelDataTable')">
 	<fmt:setLocale value="${param.l}" />
 	<fmt:setBundle basename="m" var="i"/>
+	<title><fmt:message bundle="${i}" key="TEMPLATE.PORTALNETEJA"/></title>
 	<!-- Barra Navegación -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
