@@ -368,30 +368,30 @@ function load_data(){
 							<table id="places_adjudicades" class="display">
 								<thead>
 									<tr>
-										<th>Data d'Adjudicació</th>
-										<th>Tipus de Contracte</th>
-										<th>Tipus de Jornada</th>
-										<th>Data d'Inici</th>
-										<th>Data de Finalització Prevista</th>
-										<th>Motiu</th>
-										<th>Illa</th>
-										<th>Municipi</th>
-										<th>Adjudicat a</th>
-										<th>Unitat</th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.DATAADJUDICACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.TIPUSCONTRACTE" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.JORNADA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.FINALITZACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MOTIU" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ILLA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MUNICIPI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICAT" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.UNITAT" /></th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Data d'Adjudicació</th>
-										<th>Tipus de Contracte</th>
-										<th>Tipus de Jornada</th>
-										<th>Data d'Inici</th>
-										<th>Data de Finalització Prevista</th>
-										<th>Motiu</th>
-										<th>Illa</th>
-										<th>Municipi</th>
-										<th>Adjudicat a</th>
-										<th>Unitat</th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.DATAADJUDICACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.TIPUSCONTRACTE" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.JORNADA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.FINALITZACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MOTIU" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ILLA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MUNICIPI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICAT" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.UNITAT" /></th>
 									</tr>
 								</tfoot>
 							</table>
