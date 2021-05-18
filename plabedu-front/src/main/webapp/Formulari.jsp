@@ -25,7 +25,7 @@
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- JS externo -->
-
+	<script type="text/javascript" src="js/Formulari.js"></script>
 <!-- Scripts -->
 <!-- Estilos -->
 <!-- Bootstrap CSS -->
@@ -89,11 +89,11 @@
 					</ul>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='index.jsp'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
+							onclick="window.location.href='Formulari.jsp'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
 						<span class="text-white"> | </span>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='index.jsp?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
+							onclick="window.location.href='Formulari.jsp?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
 				</div>
 			</div>
 			<!-- Items Navegación -->
