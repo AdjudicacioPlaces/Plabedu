@@ -93,11 +93,11 @@
 					</ul>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='Portal.jsp'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
+							onclick="window.location.href='Proves'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
 						<span class="text-white"> | </span>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='Portal.jsp?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
+							onclick="window.location.href='Proves?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
 				</div>
 			</div>
 			<!-- Items Navegación -->
@@ -125,37 +125,34 @@
 					${convocatoria.titolConvocatoria}
 				</div>
 				<div class="card-body text-center">
-					<h4 class="card-title text-info"> Convocatòria</h4><br>
+					<h4 class="card-title text-info"><fmt:message bundle="${i}" key="TEMPLATE.CONVOCATORIA" /></h4><br>
 					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-info">event</i>Data publicació: ${convocatoria.dataPublicacio}
+						<i class="material-icons text-info">event</i><fmt:message bundle="${i}" key="TEMPLATE.DATAPUBLICACIO" /> ${convocatoria.dataPublicacio}
 					</p><br>
 					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-success">event_available</i>Data
-						començament: ${convocatoria.dataComençament} 
+						<i class="material-icons text-success">event_available</i><fmt:message bundle="${i}" key="TEMPLATE.DATACOMENÇAMENT" /> ${convocatoria.dataComençament} 
 					</p><br>
 					<p class="card-text d-inline-flex justify-content-center">
-						<i class="material-icons text-danger">event_busy</i>Data
-						finalització: ${convocatoria.dataFinalitzacio}  
+						<i class="material-icons text-danger">event_busy</i><fmt:message bundle="${i}" key="TEMPLATE.DATAFINALITZACIO" /> ${convocatoria.dataFinalitzacio}  
 					</p><br>
 				</div>
 				<div id="execucio" hidden="true">
 				 <div class="card-footer text-center">
-				 <div class="popup" onclick="myFunctionFirstPopup()">EN EXECUCIÓ
-  					<span class="popuptext" id="myPopup1">Treballant amb la convocatòria</span>
+				 <div class="popup" onclick="myFunctionFirstPopup()"><fmt:message bundle="${i}" key="TEMPLATE.EXECUCIO" />
+  					<span class="popuptext" id="myPopup1"><fmt:message bundle="${i}" key="TEMPLATE.POPUP" /></span>
 				</div>
 				</div>
 				</div>
 				<div id="tancat" hidden="true">
 				<div class="card-footer text-center">
 					<a href="Adjudicacio.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Veure
-						resultats</a>
+						class="btn btn-primary btn-block text-center" role="button"><fmt:message bundle="${i}" key="TEMPLATE.VEURERESULTATS" /></a>
 				</div>
 				</div>
 				<div id="obert" hidden="true">
 				<div class="card-footer text-center">
 					<a href="Formulari.jsp"
-						class="btn btn-primary btn-block text-center" role="button">Places disponibles</a>
+						class="btn btn-primary btn-block text-center" role="button"><fmt:message bundle="${i}" key="TEMPLATE.PLACESDISPONIBLES" /></a>
 				</div>
 				</div>
 			</div>
