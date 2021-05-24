@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<ui:define name="pageTitle">#{labels.formulari_title}</ui:define>
+
+	<ui:define name="content">
+
+		<!-- <p:growl id="msj" showDetail="true" /> -->
+
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputLabel for="nom" value="#{labels.name_label}" />
+				<h:inputText id="nom" value="#{formulariBean.formulari.nom}"
+					required="true" label="Nombre requerido" />
+				<h:messages for="nom" />
+				<h:outputLabel for="llinatges" value="#{labels.surname_label}" />
+				<h:inputText id="llinatges"
+					value="#{formulariBean.formulari.llinatge}" required="true"
+					label="Apellido requerido" />
+				<h:messages for="llinatges" />
+				<h:outputLabel for="telefon" value="#{labels.phone_label}" />
+				<h:inputText id="telefon" value="#{formulariBean.formulari.telefon}"
+					 label="Telefono requerido">
+					<f:validateLongRange for="telefon" minimum="2" maximum="18"></f:validateLongRange>
+				</h:inputText>
+				<h:messages for="telefon" />
+				<h:outputLabel for="email" value="#{labels.email_label}" />
+				<h:inputText id="email" value="#{formulariBean.formulari.email}"
+					required="true" label="Email requerido" validator="#{formulariBean.validar}"/>
+				<h:messages for="email" />
+			</h:panelGrid>
+			<h:commandButton value="Agregar"
+				actionListener="#{formulariBean.registrar()}" />
+
+			<h:dataTable value="#{formulariBean.lista}" var="form"
+				rendered="#{formulariBean.lista.size()>0 eq true}">
+				<f:facet name="header">
+					<h:outputLabel value="Nom" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{form.nom}" />
+				</h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Llinatges" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{form.llinatge}" />
+				</h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Telèfon" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{form.telefon}" />
+				</h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Correu Electrònic" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{form.email}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
