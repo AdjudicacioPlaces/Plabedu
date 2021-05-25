@@ -24,13 +24,14 @@
 				<h:messages for="llinatges" />
 				<h:outputLabel for="telefon" value="#{labels.phone_label}" />
 				<h:inputText id="telefon" value="#{formulariBean.formulari.telefon}"
-					 label="Telefono requerido">
+					label="Telefono requerido">
 					<f:validateLongRange for="telefon" minimum="2" maximum="18"></f:validateLongRange>
 				</h:inputText>
 				<h:messages for="telefon" />
 				<h:outputLabel for="email" value="#{labels.email_label}" />
 				<h:inputText id="email" value="#{formulariBean.formulari.email}"
-					required="true" label="Email requerido" validator="#{formulariBean.validar}"/>
+					required="true" label="Email requerido"
+					validator="#{formulariBean.validar}" />
 				<h:messages for="email" />
 			</h:panelGrid>
 			<h:commandButton value="Agregar"
@@ -61,6 +62,38 @@
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{form.email}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h:form>
+			<h:commandButton value="Agregar plazas"
+				actionListener="#{formulariBean.registrar()}" />
+
+			<h:dataTable value="#{formulariBean.listaPlazas}" var="plaza"
+				rendered="#{formulariBean.listaPlazas.size() > 0 eq true}">
+				<f:facet name="header">
+					<h:outputLabel value="Unitat i destinació" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{plaza.unitatDestinacio}" />
+				</h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Ordre preferència" />
+				</f:facet>
+				<h:column>
+					<h:outputLabel value="#{plaza.ordrePreferencia}" />
+				</h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Modificar preferència" />
+				</f:facet>
+				<h:column>
+					<h:selectOneMenu value="#{plaza.ordrePreferencia}">
+						<f:selectItem itemValue="0" itemLabel="0" />
+						<f:selectItem itemValue="1" itemLabel="1" />
+						<f:selectItem itemValue="2" itemLabel="2" />
+						<f:selectItem itemValue="3" itemLabel="3" />
+						<f:selectItem itemValue="4" itemLabel="4" />
+					</h:selectOneMenu>
 				</h:column>
 			</h:dataTable>
 		</h:form>
