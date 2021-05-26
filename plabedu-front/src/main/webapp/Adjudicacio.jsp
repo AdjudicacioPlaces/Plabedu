@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="ple"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -10,7 +11,6 @@
 <meta name="description" content="Portal dels Interins">
 <meta name="author" content="Govern de les Illes Balears.">
 
-<title>Resultats de les adjudicacions</title>
 <!-- Scripts -->
 <!-- Bootstrap JS -->
 <script type="text/javascript"
@@ -144,6 +144,9 @@ function load_data(){
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
+	<fmt:setLocale value="${param.l}" />
+	<fmt:setBundle basename="m" var="i"/>
+	<title><fmt:message bundle="${i}" key="TEMPLATE.TITOLFORMULARI" /></title>
 	<!-- Barra Navegación -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -163,36 +166,36 @@ function load_data(){
 					id="navbarCollapse">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
-							href="inici.do">Inici</a></li>
+							href="inici.do"><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></a></li>
 						<li class="nav-item dropdown  active"><a
 							class="nav-link dropdown-toggle active" href="#"
 							id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Interins
-								Disponibles </a>
+							data-bs-toggle="dropdown" aria-expanded="false"><fmt:message bundle="${i}" key="TEMPLATE.INTERINSDISPONIBLES" /></a>
 							<ul class="dropdown-menu dropdown-menu-dark"
 								aria-labelledby="navbarDarkDropdownMenuLink">
-								<li><a class="dropdown-item" href="#">per Personal de
-										Neteja</a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.PERSONALNETEJA" /></a></li>
 							</ul></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle active" href="#"
 							id="navbarDarkDropdownMenuLink" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Utilitats </a>
+							data-bs-toggle="dropdown" aria-expanded="false"><fmt:message bundle="${i}" key="TEMPLATE.UTILITATS" /></a>
 							<ul class="dropdown-menu dropdown-menu-dark"
 								aria-labelledby="navbarDarkDropdownMenuLink">
-								<li><a class="dropdown-item" href="#">Pressa de
-										possesió</a></li>
-								<li><a class="dropdown-item" href="#">Canvi de
-										disponibilitat</a></li>
-								<li><a class="dropdown-item" href="#">Autoritzacions</a></li>
-								<li><a class="dropdown-item" href="#">Renúncies i
-										ajornaments</a></li>
-								<li><a class="dropdown-item" href="#">Comprova la teva
-										titulació</a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.POSSESSIO" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.CANVIDISPONIBILITAT" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.AUTORITZACIONS" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.RENUNCIES" /></a></li>
+								<li><a class="dropdown-item" href="#"><fmt:message bundle="${i}" key="TEMPLATE.COMPROVATITULACIO" /></a></li>
 							</ul>
-						<li class="nav-item"><a class="nav-link active" href="">Dades
-								prèvies 21/22</a></li>
+						<li class="nav-item"><a class="nav-link active" href=""><fmt:message bundle="${i}" key="TEMPLATE.DADESPREVIES" /></a></li>
 					</ul>
+						<button
+							class="m-0 text-center text-white float-right btn btn-black"
+							onclick="window.location.href='Adjudicacio.jsp'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
+						<span class="text-white"> | </span>
+						<button
+							class="m-0 text-center text-white float-right btn btn-black"
+							onclick="window.location.href='Adjudicacio.jsp?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
 				</div>
 			</div>
 			<!-- Items Navegación -->
@@ -204,8 +207,7 @@ function load_data(){
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
-					<h1 class="display-4 text-white mt-5 mb-2">Resultats de les
-						adjudicacions</h1>
+					<h1 class="display-4 text-white mt-5 mb-2"><fmt:message bundle="${i}" key="TEMPLATE.TITOLADJUDICACIONS" /></h1>
 				</div>
 			</div>
 		</div>
@@ -214,17 +216,14 @@ function load_data(){
 	<!-- Contenido -->
 	<div class="container pb-5">
 		<div class="row justify-content-center">
-			<p id="subtitol" class="text-center">A continuació teniu les
-				places que s'han adjudicat a les diferents convocatòries del curs
-				actual així com les places que s'assignen en el procés extraordinari</p>
+			<p id="subtitol" class="text-center"><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICACIOTEXT" /></p>
 			<!-- Selección Fecha -->
 			<form class="form" action="resultatsAdjudicacio.do">
 				<div class="form-row pb-3">
-					<label for="convocatoria" class="col-form-label col-form-label-lg"><strong>Convocatòria</strong></label>
+					<label for="convocatoria" class="col-form-label col-form-label-lg"><strong><fmt:message bundle="${i}" key="TEMPLATE.CONVOCATORIA" /></strong></label>
 					<select name="convocatoria" id="convocatoria"
 						class="form-control form-control-lg">
-						<option value="-1">Places del procés de convocatòria
-							setmanal de places</option>
+						<option value="-1"><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICACIOCONVOCATORIA" /></option>
 						<option value="388">388 - PLACES DEL 7 AL 9 D'ABRIL DE
 							2021</option>
 						<option value="387">387 - PLACES DEL 19 AL 22 DE MARÇ DE
@@ -320,31 +319,27 @@ function load_data(){
 				</div>
 				<div id="divButton" class="d-flex justify-content-center">
 					<button type="button" class="btn btn-primary btn-lg"
-						id="veureResultats">Veure</button>
+						id="veureResultats"><fmt:message bundle="${i}" key="TEMPLATE.VEURE" /></button>
 				</div>
 			</form>
 			<!-- Selección Fecha -->
 		</div>
 		<div id="textWarning" class="alert alert-warning" role="alert">
-			(*)La finalització indicada és orientativa, no vinculant i està
-			supeditada a la incorporació del titular. Si el camp apareix en blanc
-			suposa que no és possible concretar cap termini</div>
+			<fmt:message bundle="${i}" key="TEMPLATE.WARNING" /></div>
 		<div id="divPlacesContainer"
 			class="container align-items-start text-center">
 			<!-- Selección plazas -->
 			<div id="divPlacesButtons" class="row align-items-start">
 				<a id="a_inici"></a>
 				<div id="buttonPlaces" class="col">
-					<a class="badge badge-primary bg-primary" href="#placesAdjudicades">Places
-						adjudicades</a>
+					<a class="badge badge-primary bg-primary" href="#placesAdjudicades"><fmt:message bundle="${i}" key="TEMPLATE.PLACESADJUDICADES" /></a>
 				</div>
 				<div id="buttonPlaces" class="col">
-					<a class="badge badge-primary bg-primary" href="#placesDisponibles">Places
-						no adjudicades</a>
+					<a class="badge badge-primary bg-primary" href="#placesDisponibles"><fmt:message bundle="${i}" key="TEMPLATE.PLACESNOADJUDICADES" /></a>
 				</div>
 				<div class="col">
 					<a class="badge badge-primary bg-primary"
-						href="#placesDisponiblesAnullades">Places eliminades</a>
+						href="#placesDisponiblesAnullades"><fmt:message bundle="${i}" key="TEMPLATE.PLACESELIMINADES" /></a>
 				</div>
 			</div>
 			<!-- Selección plazas -->
@@ -359,7 +354,7 @@ function load_data(){
 							<h2>
 								<small><a href="#a_inici" class="badge badge-secondary"
 									title="Anar a l'inici"><i class="material-icons">vertical_align_top</i></a></small>
-								Relació d'ajudicacions <small>(Total de places: 102)</small>
+								<fmt:message bundle="${i}" key="TEMPLATE.RELACIOADJUDICACIONS" /> <small>(<fmt:message bundle="${i}" key="TEMPLATE.PLACESTOTALS" /> 102)</small>
 
 							</h2>
 						</th>
@@ -373,30 +368,30 @@ function load_data(){
 							<table id="places_adjudicades" class="display">
 								<thead>
 									<tr>
-										<th>Data d'Adjudicació</th>
-										<th>Tipus de Contracte</th>
-										<th>Tipus de Jornada</th>
-										<th>Data d'Inici</th>
-										<th>Data de Finalització Prevista</th>
-										<th>Motiu</th>
-										<th>Illa</th>
-										<th>Municipi</th>
-										<th>Adjudicat a</th>
-										<th>Unitat</th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.DATAADJUDICACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.TIPUSCONTRACTE" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.JORNADA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.FINALITZACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MOTIU" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ILLA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MUNICIPI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICAT" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.UNITAT" /></th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>Data d'Adjudicació</th>
-										<th>Tipus de Contracte</th>
-										<th>Tipus de Jornada</th>
-										<th>Data d'Inici</th>
-										<th>Data de Finalització Prevista</th>
-										<th>Motiu</th>
-										<th>Illa</th>
-										<th>Municipi</th>
-										<th>Adjudicat a</th>
-										<th>Unitat</th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.DATAADJUDICACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.TIPUSCONTRACTE" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.JORNADA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.INICI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.FINALITZACIO" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MOTIU" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ILLA" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.MUNICIPI" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.ADJUDICAT" /></th>
+										<th><fmt:message bundle="${i}" key="TEMPLATE.UNITAT" /></th>
 									</tr>
 								</tfoot>
 							</table>
@@ -411,28 +406,27 @@ function load_data(){
 	<section id="contactSection" class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<h3>Govern de las Illes Balears</h3>
+				<h3><fmt:message bundle="${i}" key="TEMPLATE.PEUDEPAGINA" /></h3>
 			</div>
 		</div>
 		<div id="addressDiv" class="row d-flex align-items-end">
 			<div class="col-md-6">
 				<hr>
 				<address class="d-flex align-items-start">
-					<i class="material-icons text-primary">home</i>&nbsp; Direcció:
-					C/Ter, 16 <br>&nbsp;&nbsp;07009 Palma de Mallorca <br>
+					<i class="material-icons text-primary">home</i>&nbsp; <fmt:message bundle="${i}" key="TEMPLATE.DIRECCIO" /> <br>&nbsp;&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.LLOC" /><br>
 				</address>
 				<address class="d-flex align-items-start">
-					<i class="material-icons text-primary">phone</i>&nbsp; 971 177 800
+					<i class="material-icons text-primary">phone</i>&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.PHONE" />
 				</address>
 			</div>
 			<div class="col-md-6">
 				<address class="d-flex align-items-start">
 					<i class="material-icons text-primary">email</i>&nbsp;
-					Example:&nbsp;<a href="mailto:example@caib.es">example@caib.es</a>
+					<fmt:message bundle="${i}" key="TEMPLATE.EXEMPLE1" />&nbsp;<a href="mailto:example@caib.es"><fmt:message bundle="${i}" key="TEMPLATE.EMAIL1" /></a>
 				</address>
 				<address class="d-flex align-items-start">
 					<i class="material-icons text-primary">email</i>&nbsp;
-					Example:&nbsp;<a href="mailto:example@caib.es">example@caib.es</a>
+					<fmt:message bundle="${i}" key="TEMPLATE.EXEMPLE2" />&nbsp;<a href="mailto:example@caib.es"><fmt:message bundle="${i}" key="TEMPLATE.EMAIL2" /></a>
 				</address>
 			</div>
 		</div>
@@ -441,8 +435,7 @@ function load_data(){
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">©&nbsp;Govern de les Illes
-				Balears</p>
+			<p class="m-0 text-center text-white">©&nbsp;<fmt:message bundle="${i}" key="TEMPLATE.PEUDEPAGINA" /></p>
 		</div>
 	</footer>
 	<!-- Footer -->
