@@ -9,56 +9,54 @@
 
 	<ui:define name="content">
 
-		<!-- <p:growl id="msj" showDetail="true" /> -->
-
 		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputLabel for="nom" value="#{labels.name_label}" />
 				<h:inputText id="nom" value="#{formulariBean.formulari.nom}"
 					required="true" label="Nombre requerido" />
-				<h:messages for="nom" />
+				<h:message for="nom" />
 				<h:outputLabel for="llinatges" value="#{labels.surname_label}" />
 				<h:inputText id="llinatges"
 					value="#{formulariBean.formulari.llinatge}" required="true"
 					label="Apellido requerido" />
-				<h:messages for="llinatges" />
+				<h:message for="llinatges" />
 				<h:outputLabel for="telefon" value="#{labels.phone_label}" />
 				<h:inputText id="telefon" value="#{formulariBean.formulari.telefon}"
-					label="Telefono requerido">
+					required="true" label="Telefono requerido">
 					<f:validateLongRange for="telefon" minimum="2" maximum="18"></f:validateLongRange>
 				</h:inputText>
-				<h:messages for="telefon" />
+				<h:message for="telefon" />
 				<h:outputLabel for="email" value="#{labels.email_label}" />
 				<h:inputText id="email" value="#{formulariBean.formulari.email}"
 					required="true" label="Email requerido"
 					validator="#{formulariBean.validar}" />
-				<h:messages for="email" />
+				<h:message for="email" />
 			</h:panelGrid>
-			<h:commandButton value="Agregar"
+			<h:commandButton value="#{labels.button_afegeix_persona}"
 				actionListener="#{formulariBean.registrar()}" />
 
 			<h:dataTable value="#{formulariBean.lista}" var="form"
 				rendered="#{formulariBean.lista.size()>0 eq true}">
 				<f:facet name="header">
-					<h:outputLabel value="Nom" />
+					<h:outputLabel value="#{labels.name_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{form.nom}" />
 				</h:column>
 				<f:facet name="header">
-					<h:outputLabel value="Llinatges" />
+					<h:outputLabel value="#{labels.surname_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{form.llinatge}" />
 				</h:column>
 				<f:facet name="header">
-					<h:outputLabel value="Telèfon" />
+					<h:outputLabel value="#{labels.phone_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{form.telefon}" />
 				</h:column>
 				<f:facet name="header">
-					<h:outputLabel value="Correu Electrònic" />
+					<h:outputLabel value="#{labels.email_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{form.email}" />
@@ -66,33 +64,29 @@
 			</h:dataTable>
 		</h:form>
 		<h:form>
-			<h:commandButton value="Agregar plazas"
-				actionListener="#{formulariBean.registrar()}" />
+			<h:commandButton value="#{labels.button_afegeix_places}"
+				actionListener="#{formulariBean.afegirPlaza()}" />
 
 			<h:dataTable value="#{formulariBean.listaPlazas}" var="plaza"
 				rendered="#{formulariBean.listaPlazas.size() > 0 eq true}">
 				<f:facet name="header">
-					<h:outputLabel value="Unitat i destinació" />
+					<h:outputLabel value="#{labels.centres_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{plaza.unitatDestinacio}" />
 				</h:column>
 				<f:facet name="header">
-					<h:outputLabel value="Ordre preferència" />
+					<h:outputLabel value="#{labels.ordre_label}" />
 				</f:facet>
 				<h:column>
 					<h:outputLabel value="#{plaza.ordrePreferencia}" />
 				</h:column>
 				<f:facet name="header">
-					<h:outputLabel value="Modificar preferència" />
+					<h:outputLabel value="#{labels.modificar_label}" />
 				</f:facet>
 				<h:column>
 					<h:selectOneMenu value="#{plaza.ordrePreferencia}">
-						<f:selectItem itemValue="0" itemLabel="0" />
-						<f:selectItem itemValue="1" itemLabel="1" />
-						<f:selectItem itemValue="2" itemLabel="2" />
-						<f:selectItem itemValue="3" itemLabel="3" />
-						<f:selectItem itemValue="4" itemLabel="4" />
+						<f:selectItems value="#{formulariBean.numPlaza}" />
 					</h:selectOneMenu>
 				</h:column>
 			</h:dataTable>
