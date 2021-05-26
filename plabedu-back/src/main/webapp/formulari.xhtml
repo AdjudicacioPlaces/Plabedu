@@ -67,7 +67,8 @@
 			<h:commandButton value="#{labels.button_afegeix_places}"
 				actionListener="#{formulariBean.afegirPlaza()}" />
 
-			<h:dataTable value="#{formulariBean.listaPlazas}" var="plaza"
+			<h:dataTable id="tablePlazas" value="#{formulariBean.listaPlazas}"
+				var="plaza"
 				rendered="#{formulariBean.listaPlazas.size() > 0 eq true}">
 				<f:facet name="header">
 					<h:outputLabel value="#{labels.centres_label}" />
@@ -85,8 +86,13 @@
 					<h:outputLabel value="#{labels.modificar_label}" />
 				</f:facet>
 				<h:column>
-					<h:selectOneMenu value="#{plaza.ordrePreferencia}">
-						<f:selectItems value="#{formulariBean.numPlaza}" />
+					<h:selectOneMenu>
+						<f:selectItems value="#{formulariBean.numPlaza}" var="numero" />
+						<f:ajax event="change" listener="#{formulariBean.modificaOrdre}"
+							render="tablePlazas" execute="@this">
+							<f:param value="numero" name="numero" />
+							<f:param value="plaza" name="plaza" />
+						</f:ajax>
 					</h:selectOneMenu>
 				</h:column>
 			</h:dataTable>
