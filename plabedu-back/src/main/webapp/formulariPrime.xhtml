@@ -9,8 +9,8 @@
 
 	<ui:define name="content">
 
-		<h:form>
-			<h:panelGrid columns="3">
+		<h:form id="formulari">
+			<h:panelGrid id="formPersona" columns="3">
 				<p:outputLabel for="nom" value="#{labels.name_label}" />
 				<p:inputText id="nom" value="#{formulariBean.formulari.nom}"
 					required="true" />
@@ -31,7 +31,7 @@
 				<p:message for="email" display="Email requerido" />
 			</h:panelGrid>
 			<p:commandButton value="#{labels.button_afegeix_persona}"
-				actionListener="#{formulariBean.registrar()}" update="tablePersona" />
+				actionListener="#{formulariBean.registrar()}" update="formulari" />
 
 			<p:dataTable id="tablePersona" value="#{formulariBean.lista}"
 				var="form" rendered="#{formulariBean.lista.size()>0 eq true}">
@@ -49,34 +49,24 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		<h:form>
-			<h:commandButton value="#{labels.button_afegeix_places}"
-				actionListener="#{formulariBean.afegirPlaza()}" />
+		<h:form id="tablePlazas">
+			<p:commandButton value="#{labels.button_afegeix_places}"
+				actionListener="#{formulariBean.afegirPlaza()}" update="tablePlazas" />
 
-			<h:dataTable id="tablePlazas" value="#{formulariBean.listaPlazas}"
-				var="plaza"
-				rendered="#{formulariBean.listaPlazas.size() > 0 eq true}">
-				<f:facet name="header">
-					<h:outputLabel value="#{labels.centres_label}" />
-				</f:facet>
-				<h:column>
+			<p:dataTable id="tablePlazas" value="#{formulariBean.listaPlazas}"
+				var="plaza" rendered="#{formulariBean.listaPlazas.size()>0 eq true}">
+				<p:column headerText="#{labels.centres_label}">
 					<h:outputLabel value="#{plaza.unitatDestinacio}" />
-				</h:column>
-				<f:facet name="header">
-					<h:outputLabel value="#{labels.ordre_label}" />
-				</f:facet>
-				<h:column>
+				</p:column>
+				<p:column headerText="#{labels.ordre_label}">
 					<h:outputLabel value="#{plaza.ordrePreferencia}" />
-				</h:column>
-				<f:facet name="header">
-					<h:outputLabel value="#{labels.modificar_label}" />
-				</f:facet>
-				<h:column>
-					<h:selectOneMenu>
+				</p:column>
+				<p:column headerText="#{labels.modificar_label}">
+					<p:selectOneMenu>
 						<f:selectItems value="#{formulariBean.numPlaza}" var="numero" />
-					</h:selectOneMenu>
-				</h:column>
-			</h:dataTable>
+					</p:selectOneMenu>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 
 	</ui:define>
