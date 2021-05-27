@@ -31,9 +31,24 @@
 					validator="#{formulariBeanPrime.validar}" />
 				<p:message for="email" display="Email requerido" />
 			</h:panelGrid>
-			<p:commandButton value="#{labels.button_afegeix_persona}"
-				actionListener="#{formulariBeanPrime.registrar()}"
-				update="formulari" />
+
+			<p:dataTable id="tablePlazas"
+				value="#{formulariBeanPrime.listaPlazas}" var="plaza"
+				rendered="#{formulariBeanPrime.listaPlazas.size()>0 eq true}">
+				<p:column headerText="#{labels.centres_label}">
+					<h:outputLabel value="#{plaza.unitatDestinacio}" />
+				</p:column>
+				<p:column headerText="#{labels.ordre_label}">
+					<h:outputLabel value="#{plaza.ordrePreferencia}" />
+				</p:column>
+				<p:column headerText="#{labels.modificar_label}">
+					<p:selectOneMenu id="dropdown" value="#{plaza.ordrePreferencia}">
+						<f:selectItems value="#{formulariBeanPrime.numPlaza}" />
+						<p:ajax event="change" update="tablePlazas" process="tablePlazas"/>
+						<!-- <p:ajax listener="#{formulariBeanPrime.handleOnChange}" process=":formPlazas:tablePlazas:dropdown" update=":formPlazas:output"/> -->
+					</p:selectOneMenu>
+				</p:column>
+			</p:dataTable>
 
 			<p:dataTable id="tablePersona" value="#{formulariBeanPrime.lista}"
 				var="form" rendered="#{formulariBeanPrime.lista.size()>0 eq true}">
@@ -49,30 +64,14 @@
 				<p:column headerText="#{labels.email_label}">
 					<h:outputLabel value="#{form.email}" />
 				</p:column>
-			</p:dataTable>
-		</h:form>
-		<h:form id="formPlazas">
-			<p:commandButton value="#{labels.button_afegeix_places}"
-				actionListener="#{formulariBeanPrime.afegirPlaza()}"
-				update="formPlazas" />
-
-			<p:dataTable id="tablePlazas"
-				value="#{formulariBeanPrime.listaPlazas}" var="plaza"
-				rendered="#{formulariBeanPrime.listaPlazas.size()>0 eq true}">
-				<p:column headerText="#{labels.centres_label}">
-					<h:outputLabel value="#{plaza.unitatDestinacio}" />
-				</p:column>
-				<p:column headerText="#{labels.ordre_label}">
+				<p:columns value="#{formulariBeanPrime.listaPlazas}" var="plaza">
 					<h:outputLabel value="#{plaza.ordrePreferencia}" />
-				</p:column>
-				<p:column headerText="#{labels.modificar_label}">
-					<p:selectOneMenu id="dropdown" value="#{formulariBeanPrime.numeroPlaza}">
-						<f:selectItems value="#{formulariBeanPrime.numPlaza}" />
-						<p:ajax listener="#{formulariBeanPrime.handleOnChange}" process=":formPlazas:tablePlazas:dropdown" update=":formPlazas:output"/>
-					</p:selectOneMenu>
-				</p:column>
+				</p:columns>
 			</p:dataTable>
-			<p:outputLabel id="output" value="#{formulariBeanPrime.numero}" />
+
+			<p:commandButton value="#{labels.button_afegeix_persona}"
+				actionListener="#{formulariBeanPrime.registrar()}"
+				update="formulari" />
 		</h:form>
 
 	</ui:define>

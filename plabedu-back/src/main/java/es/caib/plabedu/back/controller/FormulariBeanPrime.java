@@ -3,6 +3,7 @@ package es.caib.plabedu.back.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -20,10 +21,8 @@ public class FormulariBeanPrime {
 	
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
-	private static List<Plaza> listaPlazas = new ArrayList<>();
+	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
-	private Integer numeroPlaza;
-	private Integer numero;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -57,28 +56,11 @@ public class FormulariBeanPrime {
 		FormulariBeanPrime.numPlaza = numPlaza;
 	}
 
-	public Integer getNumeroPlaza() {
-		return numeroPlaza;
-	}
-
-	public void setNumeroPlaza(Integer numeroPlaza) {
-		this.numeroPlaza = numeroPlaza;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
 	/**
 	 * Afegeix un objecte Formulari al dataTable.
 	 */
 	public void registrar() {
 		FormulariBeanPrime.lista.add(this.formulari);
-
 	}
 
 	/**
@@ -86,7 +68,9 @@ public class FormulariBeanPrime {
 	 * Inicilitza l'array numPlaza i l'omple amb el nombre de places que s'han
 	 * afegit.
 	 */
+	@PostConstruct
 	public void afegirPlaza() {
+		FormulariBeanPrime.listaPlazas=new ArrayList<Plaza>();
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES JUNIPER SERRA (Palma)", 0));
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES MOSSEN ALCOVER (Manacor)", 0));
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES SON FERRER (Calvià)", 0));
@@ -126,13 +110,4 @@ public class FormulariBeanPrime {
 		plaza.setOrdrePreferencia(numero);
 	}
 	
-	/**
-	 * Modifica el valor de numero en funció del valor que agafi la variale numeroPlaza. Aquest mètode s'executa quan
-	 * canvia el valor del component selectOneMenu amb id dropdown.
-	 */
-	public void handleOnChange() {
-		if(this.numeroPlaza!=null && this.numeroPlaza!=0) {
-			this.numero=this.numeroPlaza;
-		}
-	}
 }
