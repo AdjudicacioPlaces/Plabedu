@@ -3,21 +3,26 @@ package es.caib.plabedu.back.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.inject.Named;
 
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
 
+@Named
+@RequestScoped
 public class FormulariBeanPrime {
 	
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
 	private static List<Plaza> listaPlazas = new ArrayList<>();
 	private static Integer[] numPlaza;
+	private String prova;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -49,6 +54,14 @@ public class FormulariBeanPrime {
 
 	public void setNumPlaza(Integer[] numPlaza) {
 		FormulariBeanPrime.numPlaza = numPlaza;
+	}
+
+	public String getProva() {
+		return prova;
+	}
+
+	public void setProva(String prova) {
+		this.prova = prova;
 	}
 
 	/**

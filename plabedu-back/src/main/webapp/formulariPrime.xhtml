@@ -12,29 +12,29 @@
 		<h:form id="formulari">
 			<h:panelGrid id="formPersona" columns="3">
 				<p:outputLabel for="nom" value="#{labels.name_label}" />
-				<p:inputText id="nom" value="#{formulariBean.formulari.nom}"
+				<p:inputText id="nom" value="#{formulariBeanPrime.formulari.nom}"
 					required="true" />
 				<p:message for="nom" display="Nombre requerido" />
 				<p:outputLabel for="llinatges" value="#{labels.surname_label}" />
 				<p:inputText id="llinatges"
-					value="#{formulariBean.formulari.llinatge}" required="true" />
+					value="#{formulariBeanPrime.formulari.llinatge}" required="true" />
 				<p:message for="llinatges" display="Apellido requerido" />
 				<p:outputLabel for="telefon" value="#{labels.phone_label}" />
-				<p:inputText id="telefon" value="#{formulariBean.formulari.telefon}"
+				<p:inputText id="telefon" value="#{formulariBeanPrime.formulari.telefon}"
 					required="true">
 					<f:validateLongRange for="telefon" minimum="2" maximum="18"></f:validateLongRange>
 				</p:inputText>
 				<p:message for="telefon" display="Telefono requerido" />
 				<p:outputLabel for="email" value="#{labels.email_label}" />
-				<p:inputText id="email" value="#{formulariBean.formulari.email}"
-					required="true" validator="#{formulariBean.validar}" />
+				<p:inputText id="email" value="#{formulariBeanPrime.formulari.email}"
+					required="true" validator="#{formulariBeanPrime.validar}" />
 				<p:message for="email" display="Email requerido" />
 			</h:panelGrid>
 			<p:commandButton value="#{labels.button_afegeix_persona}"
-				actionListener="#{formulariBean.registrar()}" update="formulari" />
+				actionListener="#{formulariBeanPrime.registrar()}" update="formulari" />
 
-			<p:dataTable id="tablePersona" value="#{formulariBean.lista}"
-				var="form" rendered="#{formulariBean.lista.size()>0 eq true}">
+			<p:dataTable id="tablePersona" value="#{formulariBeanPrime.lista}"
+				var="form" rendered="#{formulariBeanPrime.lista.size()>0 eq true}">
 				<p:column headerText="#{labels.name_label}">
 					<h:outputLabel value="#{form.nom}" />
 				</p:column>
@@ -51,10 +51,10 @@
 		</h:form>
 		<h:form id="tablePlazas">
 			<p:commandButton value="#{labels.button_afegeix_places}"
-				actionListener="#{formulariBean.afegirPlaza()}" update="tablePlazas" />
+				actionListener="#{formulariBeanPrime.afegirPlaza()}" update="tablePlazas" />
 
-			<p:dataTable id="tablePlazas" value="#{formulariBean.listaPlazas}"
-				var="plaza" rendered="#{formulariBean.listaPlazas.size()>0 eq true}">
+			<p:dataTable id="tablePlazas" value="#{formulariBeanPrime.listaPlazas}"
+				var="plaza" rendered="#{formulariBeanPrime.listaPlazas.size()>0 eq true}">
 				<p:column headerText="#{labels.centres_label}">
 					<h:outputLabel value="#{plaza.unitatDestinacio}" />
 				</p:column>
@@ -63,10 +63,11 @@
 				</p:column>
 				<p:column headerText="#{labels.modificar_label}">
 					<p:selectOneMenu>
-						<f:selectItems value="#{formulariBean.numPlaza}" var="numero" />
+						<f:selectItems value="#{formulariBeanPrime.numPlaza}" var="numero" />
 					</p:selectOneMenu>
 				</p:column>
 			</p:dataTable>
+			<p:outputLabel id="output" value="#{formulariBeanPrime.prova}" />
 		</h:form>
 
 	</ui:define>
