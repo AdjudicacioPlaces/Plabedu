@@ -22,7 +22,8 @@ public class FormulariBeanPrime {
 	private static List<Formulari> lista = new ArrayList<>();
 	private static List<Plaza> listaPlazas = new ArrayList<>();
 	private static Integer[] numPlaza;
-	private String prova;
+	private Integer numeroPlaza;
+	private Integer numero;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -56,12 +57,20 @@ public class FormulariBeanPrime {
 		FormulariBeanPrime.numPlaza = numPlaza;
 	}
 
-	public String getProva() {
-		return prova;
+	public Integer getNumeroPlaza() {
+		return numeroPlaza;
 	}
 
-	public void setProva(String prova) {
-		this.prova = prova;
+	public void setNumeroPlaza(Integer numeroPlaza) {
+		this.numeroPlaza = numeroPlaza;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
 	}
 
 	/**
@@ -116,5 +125,14 @@ public class FormulariBeanPrime {
 		Plaza plaza = (Plaza) event.getComponent().getAttributes().get("plaza");
 		plaza.setOrdrePreferencia(numero);
 	}
-
+	
+	/**
+	 * Modifica el valor de numero en funció del valor que agafi la variale numeroPlaza. Aquest mètode s'executa quan
+	 * canvia el valor del component selectOneMenu amb id dropdown.
+	 */
+	public void handleOnChange() {
+		if(this.numeroPlaza!=null && this.numeroPlaza!=0) {
+			this.numero=this.numeroPlaza;
+		}
+	}
 }
