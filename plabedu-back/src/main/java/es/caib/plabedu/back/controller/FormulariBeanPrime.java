@@ -1,6 +1,8 @@
 package es.caib.plabedu.back.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.mail.Address;
@@ -19,13 +22,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.layout.Document;
+
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
 
 @Named
 @RequestScoped
-public class FormulariBeanPrime {
+public class FormulariBeanPrime implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
 	private static List<Plaza> listaPlazas;

@@ -72,13 +72,10 @@
 			<p:commandButton value="#{labels.button_afegeix_persona}"
 				actionListener="#{formulariBeanPrime.registrar()}"
 				update="formulari" />
-				
-			<p:commandButton value="Send Mail"
-				actionListener="#{formulariBeanPrime.sendMail()}"
-				update="respostaMail" />
 
-			<p:outputLabel id="respostaMail"
-				value="#{formulariBeanPrime.mailAction}" />
+			<p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2">
+				<p:dataExporter type="pdf" target="tablePersona" fileName="personesPlaces" />
+			</p:commandButton>
 		</h:form>
 
 	</ui:define>
