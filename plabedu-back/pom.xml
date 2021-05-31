@@ -58,6 +58,17 @@
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>bootstrap</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>layout</artifactId>
+			<version>7.1.15</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/kernel -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>kernel</artifactId>
+			<version>7.1.15</version>
+		</dependency>
 	</dependencies>
 
 	<build>

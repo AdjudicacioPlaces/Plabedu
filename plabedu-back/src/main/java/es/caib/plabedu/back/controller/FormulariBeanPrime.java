@@ -1,16 +1,23 @@
 package es.caib.plabedu.back.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Named;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
@@ -18,11 +25,15 @@ import es.caib.plabedu.back.model.Plaza;
 @Named
 @RequestScoped
 public class FormulariBeanPrime {
-	
+
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
+	private String mailAction;
+	
+	@Resource(mappedName="java:es.caib.plabedu.mail")
+    private Session JNDIName;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -56,6 +67,14 @@ public class FormulariBeanPrime {
 		FormulariBeanPrime.numPlaza = numPlaza;
 	}
 
+	public String getMailAction() {
+		return mailAction;
+	}
+
+	public void setMailAction(String mailAction) {
+		this.mailAction = mailAction;
+	}
+
 	/**
 	 * Afegeix un objecte Formulari al dataTable.
 	 */
@@ -70,7 +89,7 @@ public class FormulariBeanPrime {
 	 */
 	@PostConstruct
 	public void afegirPlaza() {
-		FormulariBeanPrime.listaPlazas=new ArrayList<Plaza>();
+		FormulariBeanPrime.listaPlazas = new ArrayList<Plaza>();
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES JUNIPER SERRA (Palma)", 0));
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES MOSSEN ALCOVER (Manacor)", 0));
 		FormulariBeanPrime.listaPlazas.add(new Plaza("IES SON FERRER (Calvià)", 0));
@@ -101,13 +120,37 @@ public class FormulariBeanPrime {
 		}
 	}
 
-	/**
-	 * Modifica l'ordre de preferència d'una plaça concreta.
-	 */
-	public void modificaOrdre(AjaxBehaviorEvent event) {
-		Integer numero = (Integer) event.getComponent().getAttributes().get("numero");
-		Plaza plaza = (Plaza) event.getComponent().getAttributes().get("plaza");
-		plaza.setOrdrePreferencia(numero);
+	public void validarOrdrePreferencia() {
+		Integer[] numReservats = new Integer[FormulariBeanPrime.listaPlazas.size()];
+		for (int i = 0; i < FormulariBeanPrime.listaPlazas.size(); i++) {
+			numReservats[i] = FormulariBeanPrime.listaPlazas.get(i).getOrdrePreferencia();
+		}
+		for (int i = 0; i < FormulariBeanPrime.listaPlazas.size(); i++) {
+			for (int j = 0; i < numReservats.length; j++) {
+				if (FormulariBeanPrime.listaPlazas.get(i).getOrdrePreferencia() == numReservats[j]) {
+
+				}
+			}
+		}
 	}
-	
+
+	public void sendMail() {
+
+		try {
+			MimeMessage m = new MimeMessage(JNDIName);
+			Address from = new InternetAddress("no-reply@caib.es");
+			Address[] to = new InternetAddress[] { new InternetAddress("jose.miguel.rivas.22@gmail.com") };
+
+			m.setFrom(from);
+			m.setRecipients(Message.RecipientType.TO, to);
+			m.setSubject("JBoss AS 7 Mail");
+			m.setSentDate(new java.util.Date());
+			m.setContent("Mail sent from JBoss AS 7", "text/plain");
+			Transport.send(m);
+			this.mailAction = "Mail sent!";
+		} catch (javax.mail.MessagingException e) {
+			e.printStackTrace();
+			this.mailAction = "Error in Sending Mail: " + e;
+		}
+	}
 }

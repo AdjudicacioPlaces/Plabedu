@@ -44,7 +44,7 @@
 				<p:column headerText="#{labels.modificar_label}">
 					<p:selectOneMenu id="dropdown" value="#{plaza.ordrePreferencia}">
 						<f:selectItems value="#{formulariBeanPrime.numPlaza}" />
-						<p:ajax event="change" update="tablePlazas" process="tablePlazas"/>
+						<p:ajax event="change" update="tablePlazas" process="tablePlazas" />
 						<!-- <p:ajax listener="#{formulariBeanPrime.handleOnChange}" process=":formPlazas:tablePlazas:dropdown" update=":formPlazas:output"/> -->
 					</p:selectOneMenu>
 				</p:column>
@@ -72,6 +72,13 @@
 			<p:commandButton value="#{labels.button_afegeix_persona}"
 				actionListener="#{formulariBeanPrime.registrar()}"
 				update="formulari" />
+				
+			<p:commandButton value="Send Mail"
+				actionListener="#{formulariBeanPrime.sendMail()}"
+				update="respostaMail" />
+
+			<p:outputLabel id="respostaMail"
+				value="#{formulariBeanPrime.mailAction}" />
 		</h:form>
 
 	</ui:define>
