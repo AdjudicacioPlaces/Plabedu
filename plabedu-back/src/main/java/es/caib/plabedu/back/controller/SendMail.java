@@ -14,10 +14,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.annotation.Resource;
 
-@WebServlet(value="/mail")
+@WebServlet(value="/Mail")
 public class SendMail extends HttpServlet
 {
-    @Resource(mappedName="java:jboss/mail/Default")
+    @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
     private Session mailSession;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

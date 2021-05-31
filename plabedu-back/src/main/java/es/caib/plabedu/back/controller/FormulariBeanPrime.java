@@ -31,8 +31,8 @@ public class FormulariBeanPrime {
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
-	
-	@Resource(mappedName="java:es.caib.plabedu.mail")
+	//Amb aquesta anotació declarem el recurs que necessitem per emprar el servei SMTP de la CAIB
+	@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
     private Session JNDIName;
 
 	public Formulari getFormulari() {
