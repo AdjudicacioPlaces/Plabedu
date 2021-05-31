@@ -17,7 +17,11 @@ import javax.annotation.Resource;
 @WebServlet(value="/Mail")
 public class SendMail extends HttpServlet
 {
-    @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
+    /**
+	 * 
+	 */
+	/*private static final long serialVersionUID = 1L;
+	@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
     private Session mailSession;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,5 +47,5 @@ public class SendMail extends HttpServlet
                 out.println("Error in Sending Mail: "+e);
             }
         }
-    }
+    }*/
 }

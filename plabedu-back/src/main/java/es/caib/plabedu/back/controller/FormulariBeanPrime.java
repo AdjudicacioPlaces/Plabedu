@@ -32,8 +32,8 @@ public class FormulariBeanPrime {
 	private static Integer[] numPlaza;
 	private String mailAction;
 	//Amb aquesta anotació declarem el recurs que necessitem per emprar el servei SMTP de la CAIB
-	@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
-    private Session JNDIName;
+	//@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
+    //private Session JNDIName;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -134,7 +134,7 @@ public class FormulariBeanPrime {
 		}
 	}
 
-	public void sendMail() {
+	/*public void sendMail() {
 
 		try {
 			MimeMessage m = new MimeMessage(JNDIName);
@@ -152,5 +152,5 @@ public class FormulariBeanPrime {
 			e.printStackTrace();
 			this.mailAction = "Error in Sending Mail: " + e;
 		}
-	}
+	}*/
 }
