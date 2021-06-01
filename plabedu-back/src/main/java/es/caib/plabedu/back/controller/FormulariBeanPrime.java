@@ -1,5 +1,6 @@
 package es.caib.plabedu.back.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -22,8 +23,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.layout.Document;
+import com.lowagie.text.BadElementException;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Paragraph;
 
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
@@ -41,10 +46,11 @@ public class FormulariBeanPrime implements Serializable {
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
-	private String prova="datos";
-	//Amb aquesta anotació declarem el recurs que necessitem per emprar el servei SMTP de la CAIB
-	//@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
-    //private Session JNDIName;
+	private String prova = "datos";
+	// Amb aquesta anotació declarem el recurs que necessitem per emprar el servei
+	// SMTP de la CAIB
+	// @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
+	// private Session JNDIName;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -85,7 +91,7 @@ public class FormulariBeanPrime implements Serializable {
 	public void setMailAction(String mailAction) {
 		this.mailAction = mailAction;
 	}
-	
+
 	public String getProva() {
 		return prova;
 	}
@@ -153,23 +159,27 @@ public class FormulariBeanPrime implements Serializable {
 		}
 	}
 
-	/*public void sendMail() {
+	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+		Document pdf = (Document) document;
+		pdf.open();
+		pdf.setPageSize(PageSize.A4);
+		Paragraph p = new Paragraph("Nom: " + this.formulari.getNom() + "\n" + "Llinatges: "
+				+ this.formulari.getLlinatge() + "\n" + "Telèfon: " + this.formulari.getTelefon() + "\n"
+				+ "Correu electrònic: " + this.formulari.getEmail() + "\n\n");
+		pdf.add(p);
+	}
 
-		try {
-			MimeMessage m = new MimeMessage(JNDIName);
-			Address from = new InternetAddress("no-reply@caib.es");
-			Address[] to = new InternetAddress[] { new InternetAddress("jose.miguel.rivas.22@gmail.com") };
-
-			m.setFrom(from);
-			m.setRecipients(Message.RecipientType.TO, to);
-			m.setSubject("JBoss AS 7 Mail");
-			m.setSentDate(new java.util.Date());
-			m.setContent("Mail sent from JBoss AS 7", "text/plain");
-			Transport.send(m);
-			this.mailAction = "Mail sent!";
-		} catch (javax.mail.MessagingException e) {
-			e.printStackTrace();
-			this.mailAction = "Error in Sending Mail: " + e;
-		}
-	}*/
+	/*
+	 * public void sendMail() {
+	 * 
+	 * try { MimeMessage m = new MimeMessage(JNDIName); Address from = new
+	 * InternetAddress("no-reply@caib.es"); Address[] to = new InternetAddress[] {
+	 * new InternetAddress("jose.miguel.rivas.22@gmail.com") };
+	 * 
+	 * m.setFrom(from); m.setRecipients(Message.RecipientType.TO, to);
+	 * m.setSubject("JBoss AS 7 Mail"); m.setSentDate(new java.util.Date());
+	 * m.setContent("Mail sent from JBoss AS 7", "text/plain"); Transport.send(m);
+	 * this.mailAction = "Mail sent!"; } catch (javax.mail.MessagingException e) {
+	 * e.printStackTrace(); this.mailAction = "Error in Sending Mail: " + e; } }
+	 */
 }

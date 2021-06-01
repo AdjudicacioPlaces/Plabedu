@@ -75,7 +75,7 @@
 				update="formulari" />
 
 			<p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2" ajax="false">
-				<p:dataExporter type="pdf" target="tablePersona" fileName="products" />
+				<p:dataExporter type="pdf" target="tablePersona" fileName="products" preProcessor="#{formulariBeanPrime.preProcessPDF}"/>
 			</p:commandButton>
 		</h:form>
 
