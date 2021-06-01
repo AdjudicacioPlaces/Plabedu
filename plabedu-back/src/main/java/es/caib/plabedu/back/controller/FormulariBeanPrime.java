@@ -46,7 +46,7 @@ public class FormulariBeanPrime implements Serializable {
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
-	private String prova = "datos";
+	private String columnHeader="Unitat i destinació ";
 	// Amb aquesta anotació declarem el recurs que necessitem per emprar el servei
 	// SMTP de la CAIB
 	// @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
@@ -90,14 +90,6 @@ public class FormulariBeanPrime implements Serializable {
 
 	public void setMailAction(String mailAction) {
 		this.mailAction = mailAction;
-	}
-
-	public String getProva() {
-		return prova;
-	}
-
-	public void setProva(String prova) {
-		this.prova = prova;
 	}
 
 	/**
@@ -166,6 +158,12 @@ public class FormulariBeanPrime implements Serializable {
 		Paragraph p = new Paragraph("Nom: " + this.formulari.getNom() + "\n" + "Llinatges: "
 				+ this.formulari.getLlinatge() + "\n" + "Telèfon: " + this.formulari.getTelefon() + "\n"
 				+ "Correu electrònic: " + this.formulari.getEmail() + "\n\n");
+		pdf.add(p);
+	}
+	
+	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+		Document pdf = (Document) document;
+		Paragraph p = new Paragraph("\n\n"+"Aquí anirà el ID format per DataIPID");
 		pdf.add(p);
 	}
 

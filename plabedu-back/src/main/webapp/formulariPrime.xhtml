@@ -24,7 +24,6 @@
 				<p:outputLabel for="telefon" value="#{labels.phone_label}" />
 				<p:inputText id="telefon"
 					value="#{formulariBeanPrime.formulari.telefon}" required="true">
-					<f:validateLongRange for="telefon" minimum="2" maximum="18"></f:validateLongRange>
 				</p:inputText>
 				<p:message for="telefon" display="Telefono requerido" />
 				<p:outputLabel for="email" value="#{labels.email_label}" />
@@ -75,7 +74,7 @@
 				update="formulari" />
 
 			<p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2" ajax="false">
-				<p:dataExporter type="pdf" target="tablePersona" fileName="products" preProcessor="#{formulariBeanPrime.preProcessPDF}"/>
+				<p:dataExporter type="pdf" target="tablePersona" fileName="products" preProcessor="#{formulariBeanPrime.preProcessPDF}" postProcessor="#{formulariBeanPrime.postProcessPDF}"/>
 			</p:commandButton>
 		</h:form>
 
