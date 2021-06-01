@@ -41,6 +41,7 @@ public class FormulariBeanPrime implements Serializable {
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
+	private String prova="datos";
 	//Amb aquesta anotació declarem el recurs que necessitem per emprar el servei SMTP de la CAIB
 	//@Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
     //private Session JNDIName;
@@ -83,6 +84,14 @@ public class FormulariBeanPrime implements Serializable {
 
 	public void setMailAction(String mailAction) {
 		this.mailAction = mailAction;
+	}
+	
+	public String getProva() {
+		return prova;
+	}
+
+	public void setProva(String prova) {
+		this.prova = prova;
 	}
 
 	/**
