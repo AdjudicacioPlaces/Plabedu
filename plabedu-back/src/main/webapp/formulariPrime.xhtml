@@ -36,7 +36,7 @@
 			<p:dataTable id="tablePlazas"
 				value="#{formulariBeanPrime.listaPlazas}" var="plaza"
 				rendered="#{formulariBeanPrime.listaPlazas.size()>0 eq true}">
-				<p:column headerText="#{labels.centres_label}">
+				<p:column headerText="#{labels.centres_label}" sortBy="#{plaza.unitatDestinacio}">
 					<h:outputLabel value="#{plaza.unitatDestinacio}" />
 				</p:column>
 				<p:column headerText="#{labels.ordre_label}">

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -43,10 +44,9 @@ public class FormulariBeanPrime implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
-	public static List<Plaza> listaPlazas;
+	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
-	private String columnHeader = "Unitat i destinació ";
 	// Amb aquesta anotació declarem el recurs que necessitem per emprar el servei
 	// SMTP de la CAIB
 	// @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
@@ -138,7 +138,8 @@ public class FormulariBeanPrime implements Serializable {
 	}
 
 	/**
-	 * Evita que l'usuari seleccioni el mateix ordre de preferència per dues o més places.
+	 * Evita que l'usuari seleccioni el mateix ordre de preferència per dues o més
+	 * places.
 	 */
 	public void validarOrdrePreferencia() {
 		for (Plaza plaza : FormulariBeanPrime.listaPlazas) {
