@@ -43,10 +43,10 @@ public class FormulariBeanPrime implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
-	private static List<Plaza> listaPlazas;
+	public static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
 	private String mailAction;
-	private String columnHeader="Unitat i destinació ";
+	private String columnHeader = "Unitat i destinació ";
 	// Amb aquesta anotació declarem el recurs que necessitem per emprar el servei
 	// SMTP de la CAIB
 	// @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
@@ -137,15 +137,16 @@ public class FormulariBeanPrime implements Serializable {
 		}
 	}
 
+	/**
+	 * Evita que l'usuari seleccioni el mateix ordre de preferència per dues o més places.
+	 */
 	public void validarOrdrePreferencia() {
-		Integer[] numReservats = new Integer[FormulariBeanPrime.listaPlazas.size()];
-		for (int i = 0; i < FormulariBeanPrime.listaPlazas.size(); i++) {
-			numReservats[i] = FormulariBeanPrime.listaPlazas.get(i).getOrdrePreferencia();
-		}
-		for (int i = 0; i < FormulariBeanPrime.listaPlazas.size(); i++) {
-			for (int j = 0; i < numReservats.length; j++) {
-				if (FormulariBeanPrime.listaPlazas.get(i).getOrdrePreferencia() == numReservats[j]) {
-
+		for (Plaza plaza : FormulariBeanPrime.listaPlazas) {
+			if (plaza.getOrdrePreferencia() != 0) {
+				for (Plaza plaza2 : FormulariBeanPrime.listaPlazas) {
+					if (plaza != plaza2 && plaza.getOrdrePreferencia() == plaza2.getOrdrePreferencia()) {
+						plaza.setOrdrePreferencia(0);
+					}
 				}
 			}
 		}
@@ -160,10 +161,10 @@ public class FormulariBeanPrime implements Serializable {
 				+ "Correu electrònic: " + this.formulari.getEmail() + "\n\n");
 		pdf.add(p);
 	}
-	
+
 	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
 		Document pdf = (Document) document;
-		Paragraph p = new Paragraph("\n\n"+"Aquí anirà el ID format per DataIPID");
+		Paragraph p = new Paragraph("\n\n" + "Aquí anirà el ID format per DataIPID");
 		pdf.add(p);
 	}
 

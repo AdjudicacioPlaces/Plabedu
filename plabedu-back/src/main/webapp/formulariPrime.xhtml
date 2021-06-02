@@ -45,7 +45,7 @@
 				<p:column headerText="#{labels.modificar_label}">
 					<p:selectOneMenu id="dropdown" value="#{plaza.ordrePreferencia}">
 						<f:selectItems value="#{formulariBeanPrime.numPlaza}" />
-						<p:ajax event="change" update="tablePlazas" process="tablePlazas" />
+						<p:ajax event="change" listener="#{formulariBeanPrime.validarOrdrePreferencia}" update="tablePlazas" process="tablePlazas" />
 					</p:selectOneMenu>
 				</p:column>
 			</p:dataTable>
