@@ -27,7 +27,6 @@ import javax.mail.internet.MimeMessage;
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 
@@ -152,7 +151,7 @@ public class FormulariBeanPrime implements Serializable {
 			}
 		}
 	}
-
+	
 	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
 		Document pdf = (Document) document;
 		pdf.open();
@@ -168,6 +167,7 @@ public class FormulariBeanPrime implements Serializable {
 		Paragraph p = new Paragraph("\n\n" + "Aquí anirà el ID format per DataIPID");
 		pdf.add(p);
 	}
+	
 
 	/*
 	 * public void sendMail() {
