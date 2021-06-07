@@ -18,25 +18,11 @@ Pàgina principal
 					<p:autoUpdate />
 				</p:growl>
 				<c:if test="#{security.admin || security.borsa}">
-				<p:commandButton value="Button1" id="btn1"
-					action="#{defaultCommandView.btn1Submit}" ajax="false"
-					styleClass="p-mr-2"/>
-				<p:defaultCommand target="#{defaultCommandView.btn}" />
+					<p:commandButton value="Formulari" ajax="false"
+						action="formulariPrime.xhmtl?faces-redirect=true" />
 				</c:if>
-			</h:form>
-			
-			<h:form>
-				<h:outputLabel value="Nombre:" for="nombre"/>
-				<h:inputText id="nombre" value="#{personaBean.nombre}"/>
-				<br/><br/>
-				<h:outputLabel value="Telefono:" for="telefono"/>
-				<h:inputText id="telefono" value="#{personaBean.telefono}"/>
-				<br/><br/>
-				<h:outputLabel value="Edad:" for="edad"/>
-				<h:inputText id="edad" value="#{personaBean.edad}"/>
-				<br/><br/>
-				<h:commandButton value="Enviar" action="welcome"/>
-				<br/><br/>
+				<br />
+				<br />
 			</h:form>
 		</div>
 	</ui:define>
