@@ -20,7 +20,12 @@ public interface Constants {
     String PLE_USER = "PLE_USER";
     
     /**
-     * Constant pel rol d'Usuari
+     * Constant pel rol d'Usuari borsa
      */
     String PLE_BORSA = "PLE_BORSA";
+    
+    /**
+     * Constant pel rol d'Usuari rrhh
+     */
+    String PLE_RRHH = "PLE_RRHH";
 }

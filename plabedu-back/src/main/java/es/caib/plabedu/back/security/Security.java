@@ -27,6 +27,14 @@ public class Security {
         return request.isUserInRole(Constants.PLE_USER);
     }
     
+    public boolean isBorsa() {
+        return request.isUserInRole(Constants.PLE_BORSA);
+    }
+   
+    public boolean isRRHH() {
+        return request.isUserInRole(Constants.PLE_RRHH);
+    }
+    
     public boolean isUserOrAdmin() {
         return isUser() || isAdmin();
     }
