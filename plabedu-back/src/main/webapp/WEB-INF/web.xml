@@ -135,7 +135,6 @@
 			<role-name>PLE_ADMIN</role-name>
 			<role-name>PLE_USER</role-name>
 			<role-name>PLE_BORSA</role-name>
-			<role-name>PLE_RRHH</role-name>
 		</auth-constraint>
 	</security-constraint>
 
@@ -160,11 +159,7 @@
 		<role-name>PLE_USER</role-name>
 	</security-role>
 	<security-role>
-		<description>Usuari borsa</description>
+		<description>Usuari-Borsa</description>
 		<role-name>PLE_BORSA</role-name>
-	</security-role>
-	<security-role>
-		<description>Usuari rrhh</description>
-		<role-name>PLE_RRHH</role-name>
 	</security-role>
 </web-app>

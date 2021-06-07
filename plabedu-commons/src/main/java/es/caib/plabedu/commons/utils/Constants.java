@@ -18,4 +18,9 @@ public interface Constants {
      * Constant pel rol d'Usuari
      */
     String PLE_USER = "PLE_USER";
+    
+    /**
+     * Constant pel rol d'Usuari
+     */
+    String PLE_BORSA = "PLE_BORSA";
 }
