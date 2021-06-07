@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -151,7 +155,15 @@ public class FormulariBeanPrime implements Serializable {
 			}
 		}
 	}
-	
+
+	/**
+	 * Edita la part del PDF abans d'afegir el datatable.
+	 * 
+	 * @param document
+	 * @throws IOException
+	 * @throws BadElementException
+	 * @throws DocumentException
+	 */
 	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
 		Document pdf = (Document) document;
 		pdf.open();
@@ -162,12 +174,40 @@ public class FormulariBeanPrime implements Serializable {
 		pdf.add(p);
 	}
 
+	/**
+	 * Edita la part del PDF després d'afegir el datatable.
+	 * 
+	 * @param document
+	 * @throws IOException
+	 * @throws BadElementException
+	 * @throws DocumentException
+	 */
 	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
 		Document pdf = (Document) document;
-		Paragraph p = new Paragraph("\n\n" + "Aquí anirà el ID format per DataIPID");
+		Paragraph p = new Paragraph("\n\n" + this.getCurrentFormatDate() + this.getCurrentIPAddress());
 		pdf.add(p);
 	}
-	
+
+	/**
+	 * Captura la data actual.
+	 * 
+	 * @return String de la data amb format (dia/mes/any hora:minuts:segons)
+	 */
+	private String getCurrentFormatDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		return formatter.format(date);
+	}
+
+	/**
+	 * Captura la direcció IPv4 del dispositiu que s'està utilitzant.
+	 * 
+	 * @return String amb la ip.
+	 * @throws UnknownHostException
+	 */
+	private String getCurrentIPAddress() throws UnknownHostException {
+		return Inet4Address.getLocalHost().getHostAddress();
+	}
 
 	/*
 	 * public void sendMail() {

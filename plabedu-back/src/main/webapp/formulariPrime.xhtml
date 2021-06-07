@@ -49,6 +49,17 @@
 					</p:selectOneMenu>
 				</p:column>
 			</p:dataTable>
+			
+			<p:dataTable id="tablePlazasPDF"
+				value="#{formulariBeanPrime.listaPlazas}" var="plaza"
+				rendered="false">
+				<p:column headerText="#{labels.centres_label}" sortBy="#{plaza.unitatDestinacio}">
+					<h:outputLabel value="#{plaza.unitatDestinacio}" />
+				</p:column>
+				<p:column headerText="#{labels.ordre_label}">
+					<h:outputLabel value="#{plaza.ordrePreferencia}" />
+				</p:column>
+			</p:dataTable>
 
 			<p:dataTable id="tablePersona" value="#{formulariBeanPrime.lista}"
 				var="form" rendered="#{formulariBeanPrime.lista.size()>0 eq true}">
@@ -74,7 +85,7 @@
 				update="formulari" />
 
 			<p:commandButton value="PDF" styleClass="p-mr-2 p-mb-2" ajax="false">
-				<p:dataExporter type="pdf" target="tablePersona" fileName="products" preProcessor="#{formulariBeanPrime.preProcessPDF}" postProcessor="#{formulariBeanPrime.postProcessPDF}"/>
+				<p:dataExporter type="pdf" target="tablePlazasPDF" fileName="products" preProcessor="#{formulariBeanPrime.preProcessPDF}" postProcessor="#{formulariBeanPrime.postProcessPDF}"/>
 			</p:commandButton>
 		</h:form>
 
