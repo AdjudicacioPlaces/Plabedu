@@ -39,17 +39,7 @@ public class Formulari {
 		this.email = email;
 	}
 
-	public Formulari(String nom, String llinatge, Integer telefon, String email) {
-		super();
-		this.nom = nom;
-		this.llinatge = llinatge;
-		this.telefon = telefon;
-		this.email = email;
-	}
-
 	public Formulari() {
 		super();
 	}
-	
-	
 }

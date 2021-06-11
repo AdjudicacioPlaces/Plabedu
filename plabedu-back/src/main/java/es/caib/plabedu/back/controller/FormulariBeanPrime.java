@@ -41,19 +41,11 @@ import es.caib.plabedu.back.model.Plaza;
 @RequestScoped
 public class FormulariBeanPrime implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Formulari formulari = new Formulari();
 	private static List<Formulari> lista = new ArrayList<>();
 	private static List<Plaza> listaPlazas;
 	private static Integer[] numPlaza;
-	private String mailAction;
-	// Amb aquesta anotació declarem el recurs que necessitem per emprar el servei
-	// SMTP de la CAIB
-	// @Resource(mappedName="java:opt/jboss/wildfly/standalone/deployments/plabedu-mail.xml")
-	// private Session JNDIName;
 
 	public Formulari getFormulari() {
 		return formulari;
@@ -86,22 +78,9 @@ public class FormulariBeanPrime implements Serializable {
 	public void setNumPlaza(Integer[] numPlaza) {
 		FormulariBeanPrime.numPlaza = numPlaza;
 	}
-
-	public String getMailAction() {
-		return mailAction;
-	}
-
-	public void setMailAction(String mailAction) {
-		this.mailAction = mailAction;
-	}
-
-	/**
-	 * Afegeix un objecte Formulari al dataTable.
-	 */
-	public void registrar() {
-		FormulariBeanPrime.lista.add(this.formulari);
-	}
-
+	
+	//---------------------------PUBLIC METHODS------------------------------------------------
+	
 	/**
 	 * Omple la listaPlazas amb objectes Plaza per visualitzar-los al dataTable.
 	 * Inicilitza l'array numPlaza i l'omple amb el nombre de places que s'han
@@ -121,6 +100,45 @@ public class FormulariBeanPrime implements Serializable {
 		for (int i = 0; i < FormulariBeanPrime.listaPlazas.size() + 1; i++) {
 			FormulariBeanPrime.numPlaza[i] = i;
 		}
+	}
+	
+	/**
+	 * Afegeix un objecte Formulari al dataTable.
+	 */
+	public void registrar() {
+		FormulariBeanPrime.lista.add(this.formulari);
+	}
+	
+	/**
+	 * Edita la part del PDF després d'afegir el datatable.
+	 * 
+	 * @param document
+	 * @throws IOException
+	 * @throws BadElementException
+	 * @throws DocumentException
+	 */
+	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+		Document pdf = (Document) document;
+		Paragraph p = new Paragraph("\n\n" + this.getCurrentFormatDate() + this.getCurrentIPAddress());
+		pdf.add(p);
+	}
+
+	/**
+	 * Edita la part del PDF abans d'afegir el datatable.
+	 * 
+	 * @param document
+	 * @throws IOException
+	 * @throws BadElementException
+	 * @throws DocumentException
+	 */
+	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+		Document pdf = (Document) document;
+		pdf.open();
+		pdf.setPageSize(PageSize.A4);
+		Paragraph p = new Paragraph("Nom: " + this.formulari.getNom() + "\n" + "Llinatges: "
+				+ this.formulari.getLlinatge() + "\n" + "Telèfon: " + this.formulari.getTelefon() + "\n"
+				+ "Correu electrònic: " + this.formulari.getEmail() + "\n\n");
+		pdf.add(p);
 	}
 
 	/**
@@ -155,38 +173,8 @@ public class FormulariBeanPrime implements Serializable {
 			}
 		}
 	}
-
-	/**
-	 * Edita la part del PDF abans d'afegir el datatable.
-	 * 
-	 * @param document
-	 * @throws IOException
-	 * @throws BadElementException
-	 * @throws DocumentException
-	 */
-	public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
-		Document pdf = (Document) document;
-		pdf.open();
-		pdf.setPageSize(PageSize.A4);
-		Paragraph p = new Paragraph("Nom: " + this.formulari.getNom() + "\n" + "Llinatges: "
-				+ this.formulari.getLlinatge() + "\n" + "Telèfon: " + this.formulari.getTelefon() + "\n"
-				+ "Correu electrònic: " + this.formulari.getEmail() + "\n\n");
-		pdf.add(p);
-	}
-
-	/**
-	 * Edita la part del PDF després d'afegir el datatable.
-	 * 
-	 * @param document
-	 * @throws IOException
-	 * @throws BadElementException
-	 * @throws DocumentException
-	 */
-	public void postProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
-		Document pdf = (Document) document;
-		Paragraph p = new Paragraph("\n\n" + this.getCurrentFormatDate() + this.getCurrentIPAddress());
-		pdf.add(p);
-	}
+	
+	//---------------------------PRIVATE METHODS------------------------------------------------
 
 	/**
 	 * Captura la data actual.
@@ -208,18 +196,4 @@ public class FormulariBeanPrime implements Serializable {
 	private String getCurrentIPAddress() throws UnknownHostException {
 		return Inet4Address.getLocalHost().getHostAddress();
 	}
-
-	/*
-	 * public void sendMail() {
-	 * 
-	 * try { MimeMessage m = new MimeMessage(JNDIName); Address from = new
-	 * InternetAddress("no-reply@caib.es"); Address[] to = new InternetAddress[] {
-	 * new InternetAddress("jose.miguel.rivas.22@gmail.com") };
-	 * 
-	 * m.setFrom(from); m.setRecipients(Message.RecipientType.TO, to);
-	 * m.setSubject("JBoss AS 7 Mail"); m.setSentDate(new java.util.Date());
-	 * m.setContent("Mail sent from JBoss AS 7", "text/plain"); Transport.send(m);
-	 * this.mailAction = "Mail sent!"; } catch (javax.mail.MessagingException e) {
-	 * e.printStackTrace(); this.mailAction = "Error in Sending Mail: " + e; } }
-	 */
 }
