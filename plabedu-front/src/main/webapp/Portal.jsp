@@ -127,7 +127,7 @@
 						<p class="card-text"><fmt:message bundle="${i}" key="TEMPLATE.PORTALTEXT" /></p>
 					</div>
 					<div class="card-footer">
-						<a href="Convocatories.jsp"
+						<a href="ConvocatoriesServlet"
 							class="btn btn-primary btn-lg btn-block position-relative"
 							role="button"><fmt:message bundle="${i}" key="TEMPLATE.VEURECONVOCATORIES" /></a>
 					</div>

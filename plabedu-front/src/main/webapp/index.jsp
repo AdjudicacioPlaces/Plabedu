@@ -125,7 +125,7 @@
 							<a href="Portal.jsp"><fmt:message bundle="${i}" key="TEMPLATE.PORTAL" /></a>
 						</h5></li>
 					<li><h5>
-							<a href="Proves"><fmt:message bundle="${i}" key="TEMPLATE.CONVOCATORIES" /></a>
+							<a href="ConvocatoriesServlet"><fmt:message bundle="${i}" key="TEMPLATE.CONVOCATORIES" /></a>
 						</h5></li>
 					<li><h5>
 							<a href="Adjudicacio.jsp"><fmt:message bundle="${i}" key="TEMPLATE.RESULTAT" /></a>

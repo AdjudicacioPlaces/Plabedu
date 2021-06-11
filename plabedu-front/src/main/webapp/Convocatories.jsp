@@ -92,11 +92,11 @@
 					</ul>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='Proves'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
+							onclick="window.location.href='ConvocatoriesServlet'"><fmt:message bundle="${i}" key="TEMPLATE.CAT" /></button>
 						<span class="text-white"> | </span>
 						<button
 							class="m-0 text-center text-white float-right btn btn-black"
-							onclick="window.location.href='Proves?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
+							onclick="window.location.href='ConvocatoriesServlet?l=es'"><fmt:message bundle="${i}" key="TEMPLATE.ES" /></button>
 				</div>
 			</div>
 			<!-- Items Navegación -->

@@ -18,15 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Proves
  */
-@WebServlet("/Proves")
-public class Proves extends HttpServlet {
+@WebServlet("/ConvocatoriesServlet")
+public class ConvocatoriesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Button> buttonList = new ArrayList<>();
 	GregorianCalendar startObertTramit = new GregorianCalendar(2021, 05, 8, 0, 0);
 	GregorianCalendar finishObertTramit = new GregorianCalendar(2021, 05, 10, 0, 0);
 	GregorianCalendar startExecucioTramit = new GregorianCalendar(2021, 05, 10, 0, 1);
 	GregorianCalendar finishExecucioTramit = new GregorianCalendar(2021, 05, 10, 23, 59);
-	public Proves() {
+	public ConvocatoriesServlet() {
 		super();
 		
 		this.createButtons(startObertTramit, finishObertTramit, "obert");
@@ -58,7 +58,7 @@ public class Proves extends HttpServlet {
 		if(id.equals("")) {
 			id="tancat";
 		}
-		List<Convocatoria> convocatories = ConvocatoriaService.getAllConvocatories();
+		List<Convocatoria> convocatories = this.getAllConvocatories();
 		request.setAttribute("convocatories", convocatories);
 		request.setAttribute("id", id);
 		RequestDispatcher myDispatcher = request.getRequestDispatcher("/Convocatories.jsp");
@@ -73,6 +73,16 @@ public class Proves extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private List<Convocatoria> getAllConvocatories() {
+		
+		List<Convocatoria> convocatories = new ArrayList<>();
+		
+		convocatories.add(Convocatoria.crearConvocatoria("C397 - LLOC DE FEINA DEL 7 AL 10 DE MAIG DE 2021", "07/05/2021", "07/05/2021 12:32", "10/05/2021 12:00"));
+		convocatories.add(Convocatoria.crearConvocatoria("C395 - LLOC DE FEINA DEL 30 D'ABRIL AL 03 DE MAIG DE 2021", "30/04/2021", "30/04/2021 12:25", "04/05/2021 09:00"));
+		convocatories.add(Convocatoria.crearConvocatoria("C393 - LLOC DE FEINA DEL 23 AL 26 D'ABRIL DE 2021", "23/04/2021", "23/04/2021 13:11", "26/04/2021 12:00"));
+		return convocatories;
 	}
 
 }
