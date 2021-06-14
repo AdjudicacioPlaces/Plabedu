@@ -48,22 +48,17 @@ public class AdjudicacioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		jsonObject = new JSONObject();
 		Gson gson = new Gson();
-		String actString = "show";
 		List<Plaza> list = new ArrayList<>();
-		// if(actString.equals("show")) {
 		list = this.getPlazas();
 		JsonElement jsonElement = gson.toJsonTree(list, new TypeToken<List<Plaza>>() {
 		}.getType());
 		JsonArray jsonArray = jsonElement.getAsJsonArray();
 		// Sets the content type of the response being sent to the client.
 		response.setContentType("application/json");
-		jsonObject.put("status", true);
 		jsonObject.put("result", jsonArray);
 		response.getWriter().print(jsonObject);
-		// }
 	}
 
 	/**

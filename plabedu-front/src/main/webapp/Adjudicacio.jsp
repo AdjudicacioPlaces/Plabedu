@@ -144,7 +144,7 @@ function load_data(){
 <!-- Estilos -->
 </head>
 <body onLoad="buildHtmlTable('#excelDataTable')">
-	<fmt:setLocale value="${param.l}" />
+	<fmt:setLocale value= "${param.l}" />
 	<fmt:setBundle basename="m" var="i"/>
 	<title><fmt:message bundle="${i}" key="TEMPLATE.TITOLFORMULARI" /></title>
 	<!-- Barra Navegación -->
