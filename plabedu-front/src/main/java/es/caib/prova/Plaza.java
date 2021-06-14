@@ -1,6 +1,6 @@
 package es.caib.prova;
 
-public class Plazas {
+public class Plaza {
 	/*-----ESTRUCTURA JSON PERSONAL DE NETEJA-----
 	 *  {
 	 *  "plaza": [
@@ -149,14 +149,14 @@ public class Plazas {
 		this.categoria = categoria;
 	}
 
-	public Plazas() {
+	public Plaza() {
 	}
 
-	public static Plazas createAdjudgedPlace(String dataAdjudicacio, String tipusContracte, String tipusJornada,
+	public static Plaza createAdjudgedPlace(String dataAdjudicacio, String tipusContracte, String tipusJornada,
 			String dataInici, String dataFiPrevista, String motiu, String illa, String municipi, String nomOcupant,
 			String unitat) {
 		autoIncrementId += 1;
-		Plazas plaza = new Plazas();
+		Plaza plaza = new Plaza();
 		plaza.id = autoIncrementId;
 		plaza.dataAdjudicacio = dataAdjudicacio;
 		plaza.tipusContracte = tipusContracte;
