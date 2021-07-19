@@ -15,6 +15,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -91,8 +93,10 @@ public class AdjudicacioNeteja extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+
+    
     private String adjudicacio() throws ParseException
-    {  // VALORAR MAPS EN LLOC DE LLISTES !!!
+    {  
         // Cridam a una consulta SQl per saber quines son les sol·licituds que han entrat.
         // Cream els llocs de feina
         Lloc_feina lloc11= new Lloc_feina(1, "lloc1prova", "nom del lloc 1", "Destinació del lloc 1", "Mallorca");
@@ -114,7 +118,7 @@ public class AdjudicacioNeteja extends HttpServlet {
         //primer cream la persona
         Persona per2= new Persona( 2, "00000012N", "persona2", "uno2", "unos2", "31-03-2016", 51.5, 1);
            //Cream la llista de places amb l'ordre que ha demanat la persona
-        HashMap<Integer, Lloc_feina> places2 = new HashMap<Integer, Lloc_feina>();
+        HashMap<Integer, Lloc_feina> places2 = new HashMap<>();
         places2.put(1,lloc12);
         places2.put(2,lloc11);
         places2.put(3,lloc13);
@@ -140,10 +144,10 @@ public class AdjudicacioNeteja extends HttpServlet {
         solicituds.put(sol2.getPerso().getLloc(), sol2);
         solicituds.put(sol3.getPerso().getLloc(), sol3);
         //Ordenam per lloc les sol·licituds
-        
-        
-       
-        
+       // solicituds = sortMapByValues(solicituds);
+        for (HashMap.Entry<Integer, Solicitud> entry : solicituds.entrySet()) {       
+            System.out.println(entry.toString());
+        }
         // crear una llista de les places disponibles per aquesta convocatoria
         ArrayList <Lloc_feina> llocFeina = new ArrayList<Lloc_feina>();;
         // crear una llista per a les places i l'adjudicació a cada una d'elles 
@@ -166,4 +170,6 @@ public class AdjudicacioNeteja extends HttpServlet {
         
         return ("Procediment acabat");
     }
+
+
 }
