@@ -147,6 +147,7 @@ public class AdjudicacioNeteja extends HttpServlet {
        // solicituds = sortMapByValues(solicituds);
         for (HashMap.Entry<Integer, Solicitud> entry : solicituds.entrySet()) {       
             System.out.println(entry.toString());
+            System.out.println("prova de commit");
         }
         // crear una llista de les places disponibles per aquesta convocatoria
         ArrayList <Lloc_feina> llocFeina = new ArrayList<Lloc_feina>();;
