@@ -97,6 +97,7 @@ public class AdjudicacioNeteja extends HttpServlet {
     
     private String adjudicacio() throws ParseException
     {  
+        Integer numsol =0;
         // Cridam a una consulta SQl per saber quines son les sol·licituds que han entrat.
         // Cream els llocs de feina
         Lloc_feina lloc11= new Lloc_feina(1, "lloc1prova", "nom del lloc 1", "Destinació del lloc 1", "Mallorca");
@@ -139,24 +140,55 @@ public class AdjudicacioNeteja extends HttpServlet {
         
         
         // Crear una llista de les persones que han participar a aquesta convocatoria amb les places i la prioritat que han triat
+        // El primer element del HashMap és l'ordre a la borsa.
         HashMap <Integer, Solicitud> solicituds = new HashMap<Integer, Solicitud>();
         solicituds.put(sol1.getPerso().getLloc(), sol1);
         solicituds.put(sol2.getPerso().getLloc(), sol2);
         solicituds.put(sol3.getPerso().getLloc(), sol3);
-        //Ordenam per lloc les sol·licituds
-       // solicituds = sortMapByValues(solicituds);
-        for (HashMap.Entry<Integer, Solicitud> entry : solicituds.entrySet()) {       
-            System.out.println(entry.toString());
-            System.out.println("prova de commit");
-        }
+        //Ordenam per lloc les sol·licituds. No és necessari ordenar xq tenim l'ordre en que està cada un i tenim el total de sol·licituds.
+
+        
         // crear una llista de les places disponibles per aquesta convocatoria
-        ArrayList <Lloc_feina> llocFeina = new ArrayList<Lloc_feina>();;
+        HashMap <String,Lloc_feina> llocFeina = new HashMap<String, Lloc_feina>();
         // crear una llista per a les places i l'adjudicació a cada una d'elles 
-       
-        
-        //Ordenar la llista de sol·licituds per puntuació de la persona
-        
-        
+        llocFeina.put(lloc11.getCodi_lloc(), lloc11);
+        llocFeina.put(lloc12.getCodi_lloc(), lloc12);
+        llocFeina.put(lloc13.getCodi_lloc(), lloc13);
+        llocFeina.put(lloc14.getCodi_lloc(), lloc14);
+        //Assignar places a persones -- Recorrer el vector de solicituds i assignar.
+        // ----Anem a fer Match!----
+         // Contam el nombre de sol·licituds que hi ha
+       numsol=solicituds.size();
+       Persona p;
+       String c_lloc;
+       HashMap <Persona, Lloc_feina> adjudicacio =new HashMap<Persona, Lloc_feina>();
+        for (Integer i=0;i<numsol;i++) {       
+            //Agafam la persona que ha fet la sol·licitud
+            p=solicituds.get(i).getPerso();
+            // Recorrem les places que ha demanat segon el seu ordre de preferència.
+            for (Integer j=0; j<solicituds.get(i).getPlaces().size();j++)
+            {
+                c_lloc=solicituds.get(i).getPlaces().get(j).getCodi_lloc();
+                if (llocFeina.containsKey(c_lloc))
+                {
+                    // Han fet Match!!!
+                    //Assignam la plaça a la persona pa l'estructura d'assignacio de la convocatoria
+                    // hem de llevar la plaça de llocFeina per que no es torni assignar a ningú
+                    adjudicacio.put(p, llocFeina.get(c_lloc)); // Estructura que té les adjudicacions
+                    llocFeina.remove(c_lloc); // una vegada adjudicada la plaça la llevam de la llista 
+                    System.out.println(p.toString() +"--------------------->" +llocFeina.get(c_lloc).toString());
+                    ////////////////////////////////////////////////////////////
+                    // hen de tenir en compte que una plaça no se llevarà     //
+                    // en el cas que una persona estigui alliberada sindical, //
+                    // o bé que tengui permís de maternitat/paternitat, s'han //
+                    // de estudiar aquests casos i tenir-los en comte en      //
+                    // aquest moment                                          //
+                    ////////////////////////////////////////////////////////////
+                    j=solicituds.get(i).getPlaces().size()+1;
+                }
+            }
+          }
+        // afegir a la base de dades. Adjudicacio/////////////////
         /* fer un doble for un per passar de persona a persona i 
            l'altre per cercar dins les prioritats quina plaça està lliure
            fer-ho per a totes les persones que han fet sol·licitud.
