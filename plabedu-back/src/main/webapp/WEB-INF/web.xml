@@ -10,10 +10,11 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
+    <!--<servlet>
         <servlet-name>AdjudicacioNeteja</servlet-name>
         <servlet-class>es.caib.plabedu.back.controller.AdjudicacioNeteja</servlet-class>
     </servlet>
+    -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
