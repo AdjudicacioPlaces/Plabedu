@@ -1,99 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package es.caib.plabedu.back.controller;
 
-import static com.itextpdf.kernel.pdf.PdfName.Collection;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
+
+
+import java.text.ParseException;
+import java.util.HashMap;
+
 import es.caib.plabedu.back.model.Lloc_feina;
 import es.caib.plabedu.back.model.Persona;
 import es.caib.plabedu.back.model.Solicitud;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.util.HashMap;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import java.io.Serializable;
+import static java.lang.System.out;
+import javax.annotation.PostConstruct;
+import javax.inject.Named;
+@Named
+@RequestScoped
 /**
+ * Controla la lògica de l'adjudicació
+ * author: x43131274
  *
- * @author x43131274
  */
-public class AdjudicacioNeteja extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdjudicacioNeteja</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdjudicacioNeteja at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+public class  AdjudicacioNeteja implements Serializable {
+   
     
-
     
-    private String adjudicacio() throws ParseException
+   
+    
+    @PostConstruct
+    public void adjudicacio2() 
+    {
+        System.out.println("adjudicant");
+    }
+    public String adjudicacio() throws ParseException 
     {  
+        out.println("adjudicant");
         Integer numsol =0;
+
+        // VALORAR MAPS EN LLOC DE LLISTES !!!
         // Cridam a una consulta SQl per saber quines son les sol·licituds que han entrat.
         // Cream els llocs de feina
         Lloc_feina lloc11= new Lloc_feina(1, "lloc1prova", "nom del lloc 1", "Destinació del lloc 1", "Mallorca");
@@ -115,7 +69,7 @@ public class AdjudicacioNeteja extends HttpServlet {
         //primer cream la persona
         Persona per2= new Persona( 2, "00000012N", "persona2", "uno2", "unos2", "31-03-2016", 51.5, 1);
            //Cream la llista de places amb l'ordre que ha demanat la persona
-        HashMap<Integer, Lloc_feina> places2 = new HashMap<>();
+        HashMap<Integer, Lloc_feina> places2 = new HashMap<Integer, Lloc_feina>();
         places2.put(1,lloc12);
         places2.put(2,lloc11);
         places2.put(3,lloc13);
@@ -133,15 +87,18 @@ public class AdjudicacioNeteja extends HttpServlet {
         places3.put(4,lloc14);
            // Cream la sol·licitud
         Solicitud sol3=new Solicitud(per3, 10001, 2021001, places3);
-        
-        
+         
         // Crear una llista de les persones que han participar a aquesta convocatoria amb les places i la prioritat que han triat
         // El primer element del HashMap és l'ordre a la borsa.
         HashMap <Integer, Solicitud> solicituds = new HashMap<Integer, Solicitud>();
         solicituds.put(sol1.getPerso().getLloc(), sol1);
         solicituds.put(sol2.getPerso().getLloc(), sol2);
         solicituds.put(sol3.getPerso().getLloc(), sol3);
+
         //Ordenam per lloc les sol·licituds. No és necessari ordenar xq tenim l'ordre en que està cada un i tenim el total de sol·licituds.
+
+
+        //Ordenam per lloc les sol·licituds
 
         
         // crear una llista de les places disponibles per aquesta convocatoria
@@ -172,7 +129,7 @@ public class AdjudicacioNeteja extends HttpServlet {
                     // hem de llevar la plaça de llocFeina per que no es torni assignar a ningú
                     adjudicacio.put(p, llocFeina.get(c_lloc)); // Estructura que té les adjudicacions
                     llocFeina.remove(c_lloc); // una vegada adjudicada la plaça la llevam de la llista 
-                    System.out.println(p.toString() +"--------------------->" +llocFeina.get(c_lloc).toString());
+                    out.println(p.toString() +"--------------------->" +llocFeina.get(c_lloc).toString());
                     ////////////////////////////////////////////////////////////
                     // hen de tenir en compte que una plaça no se llevarà     //
                     // en el cas que una persona estigui alliberada sindical, //
@@ -199,6 +156,4 @@ public class AdjudicacioNeteja extends HttpServlet {
         
         return ("Procediment acabat");
     }
-
-
 }

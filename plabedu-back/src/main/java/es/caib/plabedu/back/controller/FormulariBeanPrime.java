@@ -36,6 +36,7 @@ import com.lowagie.text.Paragraph;
 
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
+import static java.lang.System.out;
 
 @Named
 @RequestScoped
@@ -106,6 +107,7 @@ public class FormulariBeanPrime implements Serializable {
 	 * Afegeix un objecte Formulari al dataTable.
 	 */
 	public void registrar() {
+                out.println("Afegit");
 		FormulariBeanPrime.lista.add(this.formulari);
 	}
 	

@@ -1,12 +1,12 @@
 package es.caib.plabedu.back.controller;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -15,7 +15,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import es.caib.plabedu.back.model.Formulari;
 import es.caib.plabedu.back.model.Plaza;
 
-@ManagedBean
+
 @RequestScoped
 /**
  * Controla la lògica del formulari.xhtml.
