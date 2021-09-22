@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!--
+Pàgina amb informació d'accessibilitat
+-->
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+    <ui:define name="pageTitle">#{labels.configuracio_title}</ui:define>
+
+    <ui:define name="breadcrumb">
+        <p:menuitem value="#{labels.configuracio_link}" outcome="/configuracioUsuari"/>
+    </ui:define>
+
+    <ui:define name="content">
+		<table class="table">
+		  <tbody>
+		    <tr>
+		      <th scope="row">#{labels['configuracio_usuari']}</th>
+		      <td>#{userInfo.username}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">#{labels['configuracio_nom']}</th>
+		      <td>#{userInfo.nom}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">#{labels['configuracio_llinatges']}</th>
+		      <td>#{userInfo.llinatges}</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">#{labels['configuracio_email']}</th>
+		      <td>#{userInfo.email}</td>
+		    </tr>
+                      <tr>
+		      <th scope="row">#{labels['configuracio_nif']}</th>
+		      <td>#{userInfo.nif}</td>
+		    </tr>
+                    <h:form>
+                        <tr>
+                            <th scope="row">#{labels['configuracio_emailnotif']}</th>
+                            <td><span class="ui-float-label">
+                                <p:inputText id="float-input" value="myemail@example.com"/>
+                                <!-- -->
+                                <p:outputLabel for="@previous" value="email"/>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">#{labels['configuracio_tel']}</th>
+                            <td>Crear un objecte persona amb les dades</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><button onClick="history.go(0);">Cancel·la canvis</button>
+                                <!-- <p:commandButton  value="Desa"  action="#{userInfo.email} " process="@this" />--></th>
+                            
+                        </tr>
+                    </h:form>
+		  </tbody>
+		</table>
+    </ui:define>
+</ui:composition>
+</html>

@@ -22,31 +22,31 @@ import es.caib.plabedu.back.model.Persona;
 import es.caib.plabedu.back.model.Solicitud;
 import java.io.Serializable;
 import static java.lang.System.out;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
+
 @Named
+@ManagedBean
 @RequestScoped
 /**
  * Controla la lògica de l'adjudicació
  * author: x43131274
  *
  */
+@SuppressWarnings("deprecation")
 public class  AdjudicacioNeteja implements Serializable {
-   
     
-    
-   
-    
-    @PostConstruct
-    public void adjudicacio2() 
-    {
-        System.out.println("adjudicant");
-    }
-    public String adjudicacio() throws ParseException 
+    private String resultat;
+
+    // @PostConstruct
+    public void adjudicacio() throws ParseException 
     {  
+        this.resultat = "_";
         out.println("adjudicant");
         Integer numsol =0;
-
+        
         // VALORAR MAPS EN LLOC DE LLISTES !!!
         // Cridam a una consulta SQl per saber quines son les sol·licituds que han entrat.
         // Cream els llocs de feina
@@ -54,20 +54,27 @@ public class  AdjudicacioNeteja implements Serializable {
         Lloc_feina lloc12= new Lloc_feina(2, "lloc2prova", "nom del lloc 2", "Destinació del lloc 2", "Mallorca");
         Lloc_feina lloc13= new Lloc_feina(3, "lloc3prova", "nom del lloc 3", "Destinació del lloc 3", "Mallorca");
         Lloc_feina lloc14= new Lloc_feina(4, "lloc4prova", "nom del lloc 4", "Destinació del lloc 4", "Mallorca");
+        System.out.println("Creats els llocs de feina");
+        
         // Cream ls sol·licitud
            //primer cream la persona
-        Persona per1= new Persona( 1, "00000012N", "persona", "uno", "unos", "31-03-2016", 50.5, 3);
+        Persona per1 = new Persona( 1, "00000012N", "persona", "uno", "unos", "31-03-2016", 50.5, 3,null,null,null);
+        
+        System.out.println("creada primera persona");
+        System.out.println(per1.toString());
            //Cream la llista de places amb l'ordre que ha demanat la persona
         HashMap<Integer, Lloc_feina> places = new HashMap<Integer, Lloc_feina>();
         places.put(1,lloc14);
         places.put(2,lloc12);
         places.put(3,lloc11);
-        
+        System.out.println("Creats la llista de les priemra persona");
            // Cream la sol·licitud
         Solicitud sol1=new Solicitud(per1, 10001, 2021001, places);
-            
+        System.out.println("creada la sol·licitud 1");
+        
+           
         //primer cream la persona
-        Persona per2= new Persona( 2, "00000012N", "persona2", "uno2", "unos2", "31-03-2016", 51.5, 1);
+        Persona per2= new Persona( 2, "00000012N", "persona2", "uno2", "unos2", "31-03-2016", 51.5, 1,null,null,null);
            //Cream la llista de places amb l'ordre que ha demanat la persona
         HashMap<Integer, Lloc_feina> places2 = new HashMap<Integer, Lloc_feina>();
         places2.put(1,lloc12);
@@ -77,8 +84,10 @@ public class  AdjudicacioNeteja implements Serializable {
            // Cream la sol·licitud
         Solicitud sol2=new Solicitud(per2, 10001, 2021001, places2);
         
+        System.out.println("creada la sol·licitud 2");
+        
         //primer cream la persona
-        Persona per3= new Persona( 3, "00000012N", "persona3", "uno3", "unos3", "31-03-2016", 51.0, 2);
+        Persona per3= new Persona( 3, "00000012N", "persona3", "uno3", "unos3", "31-03-2016", 51.0, 2,null, null, null);
            //Cream la llista de places amb l'ordre que ha demanat la persona
         HashMap<Integer, Lloc_feina> places3 = new HashMap<Integer, Lloc_feina>();
         places3.put(1,lloc11);
@@ -87,14 +96,16 @@ public class  AdjudicacioNeteja implements Serializable {
         places3.put(4,lloc14);
            // Cream la sol·licitud
         Solicitud sol3=new Solicitud(per3, 10001, 2021001, places3);
-         
+        System.out.println("creada la sol·licitud 3");
+
         // Crear una llista de les persones que han participar a aquesta convocatoria amb les places i la prioritat que han triat
         // El primer element del HashMap és l'ordre a la borsa.
         HashMap <Integer, Solicitud> solicituds = new HashMap<Integer, Solicitud>();
         solicituds.put(sol1.getPerso().getLloc(), sol1);
         solicituds.put(sol2.getPerso().getLloc(), sol2);
         solicituds.put(sol3.getPerso().getLloc(), sol3);
-
+        System.out.println("El primer element del HashMap és l'ordre a la borsa#########################################");
+        System.out.println(solicituds.get(1).getPerso().toString());
         //Ordenam per lloc les sol·licituds. No és necessari ordenar xq tenim l'ordre en que està cada un i tenim el total de sol·licituds.
 
 
@@ -109,38 +120,59 @@ public class  AdjudicacioNeteja implements Serializable {
         llocFeina.put(lloc13.getCodi_lloc(), lloc13);
         llocFeina.put(lloc14.getCodi_lloc(), lloc14);
         //Assignar places a persones -- Recorrer el vector de solicituds i assignar.
+         System.out.println("Assignar places a persones -- Recorrer el vector de solicituds i assignar.");
         // ----Anem a fer Match!----
          // Contam el nombre de sol·licituds que hi ha
        numsol=solicituds.size();
        Persona p;
        String c_lloc;
-       HashMap <Persona, Lloc_feina> adjudicacio =new HashMap<Persona, Lloc_feina>();
-        for (Integer i=0;i<numsol;i++) {       
+       System.out.println("----Anem a fer Match!----");
+       HashMap <Persona, Lloc_feina> adjudicacio = new HashMap<Persona, Lloc_feina>();
+       System.out.println("Creada la llista per fer match ------------------------->");
+       System.out.println(numsol);
+       Lloc_feina v;
+        for (Integer i=1;i<numsol+1;i++) {       
             //Agafam la persona que ha fet la sol·licitud
+            System.out.println("entrada al primer bucle i agafada la primera sol.licitud");
+            
             p=solicituds.get(i).getPerso();
             // Recorrem les places que ha demanat segon el seu ordre de preferència.
-            for (Integer j=0; j<solicituds.get(i).getPlaces().size();j++)
+            System.out.println(solicituds.get(1).getPerso().toString());
+
+            for (Integer j=1; j<solicituds.get(i).getPlaces().size()+1;j++)
             {
                 c_lloc=solicituds.get(i).getPlaces().get(j).getCodi_lloc();
+                System.out.println("entrada al segon bucle i agafats els llocs de feina");
+                /////////////////////////////////////////////////
+                // Comprovar el lloc de feina de les places    //
+                // amb les feines.                             //
+                /////////////////////////////////////////////////
+                System.out.println(llocFeina.containsKey(c_lloc));
                 if (llocFeina.containsKey(c_lloc))
                 {
+                    System.out.println("Han fet match !!!");
+                    //posam j al final de tot per ja no ha de seguir cercant
                     // Han fet Match!!!
                     //Assignam la plaça a la persona pa l'estructura d'assignacio de la convocatoria
                     // hem de llevar la plaça de llocFeina per que no es torni assignar a ningú
                     adjudicacio.put(p, llocFeina.get(c_lloc)); // Estructura que té les adjudicacions
-                    llocFeina.remove(c_lloc); // una vegada adjudicada la plaça la llevam de la llista 
-                    out.println(p.toString() +"--------------------->" +llocFeina.get(c_lloc).toString());
+                    System.out.println(llocFeina.get(c_lloc));
+                    //v=llocFeina.remove(c_lloc); // una vegada adjudicada la plaça la llevam de la llista de places disponibles
+                    //System.out.println(v);
+                    //out.printl n(p.toString() +"--------------------->" +adjudicacio.get(c_lloc).toString());
+                    
                     ////////////////////////////////////////////////////////////
                     // hen de tenir en compte que una plaça no se llevarà     //
                     // en el cas que una persona estigui alliberada sindical, //
                     // o bé que tengui permís de maternitat/paternitat, s'han //
-                    // de estudiar aquests casos i tenir-los en comte en      //
+                    // de estudiar aquests casos i tenir-los en compte en      //
                     // aquest moment                                          //
                     ////////////////////////////////////////////////////////////
                     j=solicituds.get(i).getPlaces().size()+1;
                 }
             }
           }
+        System.out.println("FETS ELS MATCH");
         // afegir a la base de dades. Adjudicacio/////////////////
         /* fer un doble for un per passar de persona a persona i 
            l'altre per cercar dins les prioritats quina plaça està lliure
@@ -153,7 +185,12 @@ public class  AdjudicacioNeteja implements Serializable {
            i un altre amb els llocs de feina que han quedat deserts.
           
         */
+        this.resultat="adjudicacio feta";
         
-        return ("Procediment acabat");
+    }
+    public String getResultat()
+    {
+        System.out.println(this.resultat);
+        return this.resultat;
     }
 }

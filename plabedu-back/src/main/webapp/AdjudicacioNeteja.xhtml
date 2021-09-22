@@ -10,14 +10,15 @@
 	<ui:define name="pageTitle">#{labels.adjudicacio_neteja}</ui:define>
 
         <ui:define name="content">
-                  
+             
             <h:form id="adj">
                 <p:commandButton 
                     value="Executar l'adjudicació" 
-                    actionListener="#{AdjudicacioNeteja.adjudicacio2()}" 
-                    update="adj" />
+                    action="#{adjudicacioNeteja.adjudicacio()}" 
+                    process="@this" update=":info"/>
             </h:form>
-
+            </br>
+           <p:staticMessage id="info" severity="info" summary="INFO" detail="#{adjudicacioNeteja.getResultat()}" style="width: 100%"/>
         </ui:define>
 </ui:composition>
 

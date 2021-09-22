@@ -64,4 +64,8 @@ public class Lloc_feina {
         this.Illa = Illa;
     }
     
+    public String toString()
+    {
+        return(codi_lloc + " ___ " + Nom_lloc+ " ___ " +Destinacio+ " ___ "+Illa);
+    }
 }
